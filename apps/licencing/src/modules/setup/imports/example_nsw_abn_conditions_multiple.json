@@ -1,0 +1,151 @@
+{
+  "groups": {
+    "arc_requirement": {
+      "name": "ARC requirement",
+      "min_required": 1,
+      "classes": [
+        {
+          "name": "Air Conditioning",
+          "state": "National",
+          "authority": "Australian Refrigeration Council"
+        }
+      ]
+    },
+    "nsw_air_conditioning_trade": {
+      "name": "NSW trade licence",
+      "min_required": 1,
+      "classes": [
+        {
+          "name": "Electrician",
+          "state": "NSW",
+          "authority": "NSW Fair Trading"
+        },
+        {
+          "name": "Refrigeration",
+          "state": "NSW",
+          "authority": "NSW Fair Trading"
+        }
+      ]
+    },
+    "nsw_air_conditioning_air_conditioners_trade": {
+      "name": "NSW trade licence",
+      "min_required": 1,
+      "classes": [
+        {
+          "name": "Electrician",
+          "state": "NSW",
+          "authority": "NSW Fair Trading"
+        },
+        {
+          "name": "Refrigeration",
+          "state": "NSW",
+          "authority": "NSW Fair Trading"
+        }
+      ]
+    },
+    "nsw_locksmiths_trade": {
+      "name": "NSW trade licence",
+      "min_required": 1,
+      "classes": [
+        {
+          "name": "Locksmith",
+          "state": "NSW",
+          "authority": "NSW Security Licence"
+        }
+      ]
+    },
+    "nsw_locksmiths_24_7_emergency_trade": {
+      "name": "NSW trade licence",
+      "min_required": 1,
+      "classes": [
+        {
+          "name": "Locksmith",
+          "state": "NSW",
+          "authority": "NSW Security Licence"
+        }
+      ]
+    }
+  },
+  "categories": [
+    {
+      "name": "Air Conditioning",
+      "is_parent": true,
+      "states": {
+        "NSW": {
+          "licence_required": true,
+          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
+          "abn_conditions": {
+            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
+          },
+          "groups": [
+            "arc_requirement",
+            "nsw_air_conditioning_trade"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Air Conditioning",
+      "sub_category_name": "Air Conditioners",
+      "is_parent": false,
+      "states": {
+        "NSW": {
+          "licence_required": true,
+          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
+          "abn_conditions": {
+            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
+          },
+          "groups": [
+            "arc_requirement",
+            "nsw_air_conditioning_air_conditioners_trade"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Locksmiths",
+      "is_parent": true,
+      "states": {
+        "NSW": {
+          "licence_required": true,
+          "licence_note": "NOTE: Must have a Security Equipment Installer Licence to be in any locksmith category.\n\n***If advertising as a Company/Trust/Partnership - must have a Security Firm Class 2 Licence.",
+          "abn_conditions": {
+            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's ABN Entity Name",
+            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
+          },
+          "groups": [
+            "nsw_locksmiths_trade"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Locksmiths",
+      "sub_category_name": "24/7 Emergency",
+      "is_parent": false,
+      "states": {
+        "NSW": {
+          "licence_required": true,
+          "licence_note": "NOTE: Must have a Security Equipment Installer Licence to be in any locksmith category.\n\n***If advertising as a Company/Trust/Partnership - must have a Security Firm Class 2 Licence.",
+          "abn_conditions": {
+            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's ABN Entity Name",
+            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
+          },
+          "groups": [
+            "nsw_locksmiths_24_7_emergency_trade"
+          ]
+        }
+      }
+    }
+  ]
+}

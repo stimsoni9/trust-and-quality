@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "strict": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "@app/api/*": ["apps/api/src/*"],
+      "@app/licencing/*": ["apps/licencing/src/*"],
+      "@lib/shared": ["libs/shared/src"],
+      "@lib/shared/*": ["libs/shared/src/*"]
+    }
+  },
+  "include": ["**/*.ts", "libs/**/*.json"],
+  "exclude": ["dist"]
+}
+

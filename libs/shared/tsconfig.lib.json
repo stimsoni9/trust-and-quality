@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": "../../dist/libs/shared"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "test", "**/*.spec.ts"]
+}
+
+

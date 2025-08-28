@@ -1,0 +1,500 @@
+[
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Architects",
+    "state": "ACT",
+    "link": "https://www.worksafe.act.gov.au/licensing-and-registration/public-register"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Asbestos assessor",
+    "state": "ACT",
+    "link": "https://www.worksafe.act.gov.au/licensing-and-registration/public-register"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Asbestos removalists",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/generic-register?registerid=building-and-pest-inspections-public-register"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Builders",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/generic-register?registerid=building-and-pest-inspectors-public-register"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Building and pest inspections",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/epa-registers?registerid=environment-protection-authorisation-search"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Building and pest inspectors",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/construction-licences?registerid=architects"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Building assessors",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/construction-licences?registerid=licensed-builders"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Certifiers",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/construction-licences?registerid=building-assessors-public-register"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Electrician",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/construction-licences?registerid=certifiers"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Environment Protection authorisation search",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/construction-licences?registerid=electricians-public-register"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Pest and weed control operators",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/occupational-register?registerid=pdg"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Plumber, Drainer and Gasfitters",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/construction-licences?registerid=professional-engineers"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Professional Engineers",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/generic-register?registerid=pest-and-weed-control-operators"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Registered land surveyors",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/construction-licences?registerid=registered-land-surveyors"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Security Employee",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/occupational-register?registerid=security-employee"
+  },
+  {
+    "authority": "Access Canberra",
+    "authority_name": "Access Canberra - Security Master",
+    "state": "ACT",
+    "link": "https://services.accesscanberra.act.gov.au/s/public-registers/occupational-register?registerid=security-master"
+  },
+  {
+    "authority": "Worksafe ACT",
+    "authority_name": "Worksafe ACT",
+    "state": "ACT",
+    "link": "https://www.worksafe.act.gov.au/licensing-and-registration/public-register"
+  },
+  {
+    "authority": "ACMA - Australian Communications & Media Authority",
+    "authority_name": "ACMA - Australian Communications & Media Authority",
+    "state": "National",
+    "link": "nan"
+  },
+  {
+    "authority": "Australian Institute of Landscape Architects",
+    "authority_name": "Australian Institute of Landscape Architects",
+    "state": "National",
+    "link": "https://www.aila.org.au/Web/Membership/Find/Registered_Landscape_Architects.aspx"
+  },
+  {
+    "authority": "Australian Refrigeration Council",
+    "authority_name": "ARC (Business) - license starts with AU",
+    "state": "National",
+    "link": "https://www.lookforthetick.com.au/licence-check/"
+  },
+  {
+    "authority": "Australian Refrigeration Council",
+    "authority_name": "ARC (Individual) - license starts with L",
+    "state": "National",
+    "link": "http://www.lookforthetick.com.au/business-search/"
+  },
+  {
+    "authority": "Engineers Australia",
+    "authority_name": "Engineers Australia",
+    "state": "National",
+    "link": "https://portal.engineersaustralia.org.au/ner/search"
+  },
+  {
+    "authority": "Building Commission NSW",
+    "authority_name": "Building Certifiers Public Register",
+    "state": "NSW",
+    "link": "https://applications.fairtrading.nsw.gov.au/bdcregister/"
+  },
+  {
+    "authority": "Building Commission NSW",
+    "authority_name": "Building Professionals Board",
+    "state": "NSW",
+    "link": "https://verify.licence.nsw.gov.au/home/DBP"
+  },
+  {
+    "authority": "Building Commission NSW",
+    "authority_name": "Building Commission NSW",
+    "state": "NSW",
+    "link": "https://verify.licence.nsw.gov.au/home/Trades"
+  },
+  {
+    "authority": "NSW Architects Registration Board",
+    "authority_name": "NSW Architects Registration Board",
+    "state": "NSW",
+    "link": "https://www.architects.nsw.gov.au/architects-register"
+  },
+  {
+    "authority": "NSW Board of Surveying and Spatial Information",
+    "authority_name": "NSW Board of Surveying and Spatial Information",
+    "state": "NSW",
+    "link": "https://verify.licence.nsw.gov.au/home/BOSSI"
+  },
+  {
+    "authority": "NSW EPA",
+    "authority_name": "NSW EPA",
+    "state": "NSW",
+    "link": "https://nswepa-rst-prod1.pegacloud.net/prweb/PRSExt/app/public-register-search_/6WNoKA_CO_C-2gC8GOWKWg*/!STANDARD?Regulatory=Pesticide"
+  },
+  {
+    "authority": "NSW Fair Trading",
+    "authority_name": "NSW Fair Trading",
+    "state": "NSW",
+    "link": "https://verify.licence.nsw.gov.au/home/Security"
+  },
+  {
+    "authority": "SafeWork NSW (Asbestos)",
+    "authority_name": "SafeWork NSW (Asbestos)",
+    "state": "NSW",
+    "link": "https://verify.licence.nsw.gov.au/home/ADL"
+  },
+  {
+    "authority": "Safework NSW (scaffolding)",
+    "authority_name": "Safework NSW (scaffolding)",
+    "state": "NSW",
+    "link": "https://verify.licence.nsw.gov.au/home/HRW"
+  },
+  {
+    "authority": "Department of Health NT",
+    "authority_name": "Department of Health NT",
+    "state": "NT",
+    "link": "https://nt.gov.au/property/homeowners-and-landlords/maintain-and-improve-your-home/hire-pest-management-technician#:~:text=NT%20pest%20management%20technician%20licence%20register"
+  },
+  {
+    "authority": "NT Architects Board",
+    "authority_name": "NT Architects Board",
+    "state": "NT",
+    "link": "https://architects.nt.gov.au/gazetted-registrations"
+  },
+  {
+    "authority": "NT Building Practitioners Board",
+    "authority_name": "NT Building Practitioners Board",
+    "state": "NT",
+    "link": "http://www.ntlis.nt.gov.au/building-practitioners/"
+  },
+  {
+    "authority": "NT Electrical Workers and Contractors Licensing Board",
+    "authority_name": "NT Electrical Workers and Contractors Licensing Board",
+    "state": "NT",
+    "link": "https://worksafe.nt.gov.au/electrical-safety/information-for-the-community/find-a-licensed-electrical-contractor"
+  },
+  {
+    "authority": "NT Government",
+    "authority_name": "NT Government",
+    "state": "NT",
+    "link": "https://licensingnt.nt.gov.au/PublicRegister/PublicRegister/LicenceSearch.aspx"
+  },
+  {
+    "authority": "NT Plumbers and Drainers Licensing Board",
+    "authority_name": "NT Plumbers and Drainers Licensing Board",
+    "state": "NT",
+    "link": "https://plumberslicensing.nt.gov.au/#:~:text=complete%20with%20endorsement.-,Currently%20licensed%20plumbers%20and%20drainers,-Plumbers%20qualified%20to"
+  },
+  {
+    "authority": "NT Surveyor Board",
+    "authority_name": "NT Surveyor Board",
+    "state": "NT",
+    "link": "https://surveyorsboard.nt.gov.au/register"
+  },
+  {
+    "authority": "NT WorkSafe",
+    "authority_name": "NT WorkSafe",
+    "state": "NT",
+    "link": "https://worksafe.nt.gov.au/safety-and-prevention/asbestos/asbestos-removalist"
+  },
+  {
+    "authority": "NT WorkSafe",
+    "authority_name": "NT WorkSafe (Gasfitter)",
+    "state": "NT",
+    "link": "No URL available. Capture the licence information and a copy of the licence from the tradies"
+  },
+  {
+    "authority": "NT WorkSafe",
+    "authority_name": "NT Worksafe (High Risk Work Licence)",
+    "state": "NT",
+    "link": "https://worksafe.nt.gov.au/licensing-and-registration/high-risk/find-a-high-risk-work-licence-assessor"
+  },
+  {
+    "authority": "BOAQ - Board of Architects Queensland",
+    "authority_name": "BOAQ - Board of Architects Queensland",
+    "state": "QLD",
+    "link": "https://www.boaq.qld.gov.au/BOAQ/Search_Register/Architect_Search.aspx"
+  },
+  {
+    "authority": "Board of Professional Engineers QLD (BPEQ)",
+    "authority_name": "Board of Professional Engineers QLD (BPEQ)",
+    "state": "QLD",
+    "link": "https://portal.bpeq.qld.gov.au/BPEQPortal/RPEQ_Directory/BPEQPortal/RPEQ_Directory.aspx?hkey=61896e88-425b-44cd-b520-e0a7345233f9"
+  },
+  {
+    "authority": "Electrical Safety Office Queensland",
+    "authority_name": "Electrical Safety Office Queensland",
+    "state": "QLD",
+    "link": "https://rapid.appianportals.com/public_licence_search"
+  },
+  {
+    "authority": "Fair Trading QLD",
+    "authority_name": "Fair Trading QLD",
+    "state": "QLD",
+    "link": "https://www.qld.gov.au/law/laws-regulated-industries-and-accountability/queensland-laws-and-regulations/check-a-licence-association-charity-or-register/check-a-licence"
+  },
+  {
+    "authority": "QBCC Pool Safety Inspectors",
+    "authority_name": "QBCC Pool Safety Inspectors",
+    "state": "QLD",
+    "link": "https://my.qbcc.qld.gov.au/s/pool-safety-inspector-search"
+  },
+  {
+    "authority": "QLD Health",
+    "authority_name": "QLD Health",
+    "state": "QLD",
+    "link": "No URL available. Capture the licence information from the tradies"
+  },
+  {
+    "authority": "QLD Surveyors Board",
+    "authority_name": "QLD Surveyors Board",
+    "state": "QLD",
+    "link": "http://sbq.com.au/public/find-a-surveyor/search-cadastral/"
+  },
+  {
+    "authority": "Queensland Building and Construction Commission",
+    "authority_name": "QBCC (plumber, drainer,sprinkler fitter)",
+    "state": "QLD",
+    "link": "https://www.onlineservices.qbcc.qld.gov.au/OnlineLicenceSearch/VisualElements/SearchBSALicenseeContent.aspx"
+  },
+  {
+    "authority": "Queensland Building and Construction Commission",
+    "authority_name": "QBCC (Queensland Building & Construction Commission)",
+    "state": "QLD",
+    "link": "https://www.onlineservices.qbcc.qld.gov.au/OnlineLicenceSearch/VisualElements/SearchBSALicenseeContent.aspx"
+  },
+  {
+    "authority": "WorkSafe QLD",
+    "authority_name": "High Risk Work Licence (scaffolding)",
+    "state": "QLD",
+    "link": "https://onlineservices.oir.qld.gov.au/hrwor/"
+  },
+  {
+    "authority": "Worksafe QLD",
+    "authority_name": "Worksafe QLD",
+    "state": "QLD",
+    "link": "https://www.worksafe.qld.gov.au/licensing-and-registrations/asbestos-removal-and-licensing/which-businesses-are-licensed-to-remove-asbestos-in-queensland"
+  },
+  {
+    "authority": "APBSA - The Architectural Practice Board of South Australia",
+    "authority_name": "APBSA - The Architectural Practice Board of South Australia",
+    "state": "SA",
+    "link": "https://www.archboardsa.org.au/architects-architectural-business"
+  },
+  {
+    "authority": "SA Health",
+    "authority_name": "SA Health",
+    "state": "SA",
+    "link": "https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/public+health/drugs+poisons+chemicals+and+contaminants/pest+control+licensing/consumers/licensed+pest+controller+businesses"
+  },
+  {
+    "authority": "SA Office of Consumer & Business Affairs",
+    "authority_name": "SA Office of Consumer & Business Affairs",
+    "state": "SA",
+    "link": "https://secure.cbs.sa.gov.au/OccLicPubReg/LicenceSearch.php"
+  },
+  {
+    "authority": "SafeWork SA",
+    "authority_name": "SA SafeWork (Asbestos Removal)",
+    "state": "SA",
+    "link": "https://www.safework.sa.gov.au/licence-and-registration/licence-holder-registers"
+  },
+  {
+    "authority": "SafeWork SA",
+    "authority_name": "Safework SA - High Risk Work Licence",
+    "state": "SA",
+    "link": "https://app.safework.sa.gov.au/indv_client/hrwlCheck"
+  },
+  {
+    "authority": "Surveyors Board of SA",
+    "authority_name": "Surveyors Board of SA",
+    "state": "SA",
+    "link": "https://www.surveyorsboardsa.org.au/public-info"
+  },
+  {
+    "authority": "Board of Architects Tasmania",
+    "authority_name": "Board of Architects Tasmania",
+    "state": "TAS",
+    "link": "http://architectsboardtas.org.au/registration/is-your-architect-registered/"
+  },
+  {
+    "authority": "CBOS - Consumer, Building and Occupational Services - TAS",
+    "authority_name": "CBOS - Consumer, Building and Occupational Services - TAS",
+    "state": "TAS",
+    "link": "https://www.cbos.tas.gov.au/topics/licensing-and-registration/search-licensed-occupations/find-a-licensed-tradesperson"
+  },
+  {
+    "authority": "Department of Natural Resources and Environment Tasmania",
+    "authority_name": "Department of Natural Resources and Environment Tasmania",
+    "state": "TAS",
+    "link": "No URL available. Capture the licence information from the tradies"
+  },
+  {
+    "authority": "Land Surveyors Board TAS",
+    "authority_name": "Land Surveyors Board TAS",
+    "state": "TAS",
+    "link": "https://surveyor.dpipwe.tas.gov.au/ext/"
+  },
+  {
+    "authority": "WorkSafe TAS",
+    "authority_name": "TAS Demolition Licensing",
+    "state": "TAS",
+    "link": "No URL available. Capture the licence information from the tradies"
+  },
+  {
+    "authority": "WorkSafe TAS",
+    "authority_name": "WorkSafe Tasmania (Asbestos Removal)",
+    "state": "TAS",
+    "link": "No URL available. Capture the licence information from the tradies"
+  },
+  {
+    "authority": "WorkSafe TAS",
+    "authority_name": "WorkSafe Tasmania (Scaffolding)",
+    "state": "TAS",
+    "link": "https://worksafe.tas.gov.au/topics/licensing-permits-and-registration/asbestos-licensing/find-a-licensed-asbestos-removalist-or-assessor"
+  },
+  {
+    "authority": "ARBV - Architects Registration Board of Victoria",
+    "authority_name": "ARBV - Architects Registration Board of Victoria",
+    "state": "VIC",
+    "link": "https://portal.arbv.vic.gov.au/search-for-registrant/"
+  },
+  {
+    "authority": "Building & Plumbing Commission VIC - Builders and Designers",
+    "authority_name": "Building & Plumbing Commission VIC - Builders and Designers",
+    "state": "VIC",
+    "link": "https://bams.vba.vic.gov.au/bams/s/practitioner-search"
+  },
+  {
+    "authority": "Building & Plumbing Commission VIC - Plumbing",
+    "authority_name": "Building & Plumbing Commission VIC - Plumbing",
+    "state": "VIC",
+    "link": "https://bams.vba.vic.gov.au/bams/s/practitioner-plumbing-search"
+  },
+  {
+    "authority": "Consumer Affairs VIC",
+    "authority_name": "Consumer Affairs VIC",
+    "state": "VIC",
+    "link": "https://registers.consumer.vic.gov.au/PEsearch"
+  },
+  {
+    "authority": "Energy Safe VIC",
+    "authority_name": "Energy Safe VIC",
+    "state": "VIC",
+    "link": "https://portal-public.energysafe.vic.gov.au/prod/RECView.html"
+  },
+  {
+    "authority": "Health.VIC",
+    "authority_name": "Health.VIC",
+    "state": "VIC",
+    "link": "http://122.252.13.117/environment/pest_licences.asp"
+  },
+  {
+    "authority": "VIC Labour Hire Authority",
+    "authority_name": "VIC Labour Hire Authority",
+    "state": "VIC",
+    "link": "https://register.labourhireauthority.vic.gov.au/#_ga=2.22922878.43042486.1697438471-407700140.1696468154"
+  },
+  {
+    "authority": "VIC Surveyors Board",
+    "authority_name": "VIC Surveyors Board",
+    "state": "VIC",
+    "link": "http://www.surveyorsboard.vic.gov.au/content/77/Check-Surveyor-Registered.aspx"
+  },
+  {
+    "authority": "Victoria Police",
+    "authority_name": "Victoria Police's Licensing and Regulation Division (Security)",
+    "state": "VIC",
+    "link": "https://www.lars.police.vic.gov.au/LARS/LARS.asp?File=/components/screens/psinfp03/psinfp03.asp&_ga=2.148947062.1523516987.1556516084-1669762722.1556256772"
+  },
+  {
+    "authority": "WorkSafe VIC",
+    "authority_name": "VIC Worksafe (scaffolding)",
+    "state": "VIC",
+    "link": "If the tradie has a digital licence - this can be verified via https://www.myworksafe.vic.gov.au/s/validate-worksafe-licence If they don't have a digital licence, capture the licence information from the tradies"
+  },
+  {
+    "authority": "WorkSafe VIC",
+    "authority_name": "WorkSafe Victoria (Asbestos Removal)",
+    "state": "VIC",
+    "link": "https://www1.worksafe.vic.gov.au/vwa/serviceproviderdirec.nsf/category?openForm&List=Asbestos+-+Licensed+Removalists&ListType=Sub"
+  },
+  {
+    "authority": "ABWA - Architects Board Of Western Australia",
+    "authority_name": "ABWA - Architects Board Of Western Australia",
+    "state": "WA",
+    "link": "https://architectsboard.org.au/?id=53"
+  },
+  {
+    "authority": "Department of Health WA",
+    "authority_name": "Department of Health WA",
+    "state": "WA",
+    "link": "No URL available. Capture the licence information from the tradies"
+  },
+  {
+    "authority": "WA DEMIRS",
+    "authority_name": "WA Building Commission Building Engineer",
+    "state": "WA",
+    "link": "https://contenthub.demirs.wa.gov.au/downloads/cals/BuildingEngineerRegister.pdf"
+  },
+  {
+    "authority": "WA DEMIRS",
+    "authority_name": "WA DEMIRS",
+    "state": "WA",
+    "link": "https://ols.demirs.wa.gov.au/search"
+  },
+  {
+    "authority": "WA Electrical Licensing Board",
+    "authority_name": "WA Electrical Licensing Board",
+    "state": "WA",
+    "link": "https://ols.demirs.wa.gov.au/search"
+  },
+  {
+    "authority": "WA Land Surveyors Board",
+    "authority_name": "WA Land Surveyors Board",
+    "state": "WA",
+    "link": "https://www.lslb.wa.gov.au/list-of-licensed-surveyors/"
+  },
+  {
+    "authority": "Western Australia Police",
+    "authority_name": "Western Australia Police",
+    "state": "WA",
+    "link": "https://www.wa.gov.au/organisation/western-australia-police-force/security-licence-current-licence-holders"
+  }
+]

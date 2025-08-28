@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:14-alpine
+    container_name: tq_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: trustandquality
+      POSTGRES_DB: trustandquality
+    # Expose DB on a non-default host port for local DB viewers
+    ports:
+      - "55432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+
+      interval: 2s
+      timeout: 5s
+      retries: 10
+  licencing:
+    build: .
+    image: trust-and-quality/licencing:local
+    container_name: tq_licencing
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      MARKETPLACE_DB_HOST: db
+      MARKETPLACE_DB_PORT: 5432
+      MARKETPLACE_DB_USER: postgres
+      MARKETPLACE_DB_PASS: trustandquality
+      MARKETPLACE_DB_NAME: trustandquality
+      MARKETPLACE_DB_CONN_MAX: 5
+      PORT: 3001
+    ports:
+      - "3001:3001"
+volumes:
+  pgdata:
