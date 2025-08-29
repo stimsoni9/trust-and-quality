@@ -14,7 +14,7 @@ COPY libs ./libs
 RUN yarn build
 
 FROM base AS runner
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY package.json ./package.json
@@ -23,6 +23,6 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/apps/licencing/src/modules/setup/imports/licensing_authorities.json /app/dist/apps/licencing/src/modules/setup/licencing/licensing_authorities.json
 # Ensure runtime has the ABN conditions JSON alongside compiled files
 COPY --from=build /app/apps/licencing/src/modules/setup/imports/example_nsw_abn_conditions_multiple.json /app/dist/apps/licencing/src/modules/setup/licencing/imports/example_nsw_abn_conditions_multiple.json
-EXPOSE 3001
-CMD ["node", "dist/apps/licencing/src/main.js"]
+EXPOSE 3001 9229
+CMD ["node", "--inspect=0.0.0.0:9229", "dist/apps/licencing/src/main.js"]
 

@@ -1,17 +1,17 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { LicenceRequirementDto } from './dtos/licence-requirement.dto';
-import { LicenceTypeEntity } from '../setup/licencing/entity/licence-type.entity';
+import { LicenceTypeEntity } from './entities/licence-type.entity';
 import { LicenceRequirementsResponseDto, GroupDto, LicenceClassDto, CategoryDto, StateDataDto, AbnConditionsDto } from './dtos/licence-requirements-response.dto';
-import { CategoryStateEntity } from '../setup/licencing/entity/category-state.entity';
-import { CategoryStateAbnConditionEntity, AbnConditionKind } from '../setup/licencing/entity/category-state-abn-condition.entity';
-import { CategoryStateLicenceGroupEntity } from '../setup/licencing/entity/category-state-licence-group.entity';
-import { LicenceRequirementGroupEntity } from '../setup/licencing/entity/licence-requirement-group.entity';
-import { LicenceRequirementGroupLicenceEntity } from '../setup/licencing/entity/licence-requirement-group-licence.entity';
-import { ParentCategoryEntity } from '../setup/category/entity/parent-category.entity';
-import { SubCategoryEntity } from '../setup/category/entity/sub-category.entity';
-import { AuthorityEntity } from '../setup/licencing/entity/authority.entity';
+import { CategoryStateEntity } from './entities/category-state.entity';
+import { CategoryStateAbnConditionEntity, AbnConditionKind } from './entities/category-state-abn-condition.entity';
+import { CategoryStateLicenceGroupEntity } from './entities/category-state-licence-group.entity';
+import { LicenceRequirementGroupEntity } from './entities/licence-requirement-group.entity';
+import { LicenceRequirementGroupLicenceEntity } from './entities/licence-requirement-group-licence.entity';
+import { ParentCategoryEntity } from '../shared/entities/parent-category.entity';
+import { SubCategoryEntity } from '../shared/entities/sub-category.entity';
+import { AuthorityEntity } from './entities/authority.entity';
 
 @Injectable()
 export class LicenceRequirementService {
@@ -111,21 +111,21 @@ export class LicenceRequirementService {
       let categoryState: CategoryStateEntity | null = null;
       
       if (subCategoryId > 0) {
-        // Look for sub category state
+        // FIXED: Look for sub category state with both parent and sub category IDs
         categoryState = await this.categoryStateRepo.findOne({
-          where: { subCategoryId, state: 'NSW' }, // Assuming NSW for now
+          where: { parentCategoryId, subCategoryId, state: 'NSW' }, // Both IDs required for sub-categories
           relations: ['subCategory']
         });
       } else {
         // Look for parent category state
         categoryState = await this.categoryStateRepo.findOne({
-          where: { parentCategoryId, state: 'NSW' }, // Assuming NSW for now
+          where: { parentCategoryId, state: 'NSW' }, // Only parent ID for parent categories
           relations: ['parentCategory']
         });
       }
 
       if (!categoryState) {
-        throw new Error(`No category state found for parent_category_id: ${parentCategoryId}, sub_category_id: ${subCategoryId}`);
+        throw new NotFoundException(`No category state found for parent_category_id: ${parentCategoryId}, sub_category_id: ${subCategoryId}`);
       }
 
       // Get ABN conditions for this category state and ABN kind
@@ -148,7 +148,7 @@ export class LicenceRequirementService {
       // Build groups
       for (const categoryStateLicenceGroup of categoryStateLicenceGroups) {
         const group = categoryStateLicenceGroup.licenceRequirementGroup;
-        const groupKey = this.generateGroupKey(group.name);
+        const groupKey = group.key || this.generateGroupKey(group.name); // Use stored key if available
         
         // Get licence types for this group
         const groupLicences = await this.licenceRequirementGroupLicenceRepo.find({
@@ -201,47 +201,215 @@ export class LicenceRequirementService {
     }
   }
 
+  async getLicenceRequirementsMultiple(
+    categoryRequests: Array<{ parent_category_id: number; sub_category_id?: number; abn_kind: AbnConditionKind }>
+  ): Promise<{ 
+    data: LicenceRequirementsResponseDto; 
+    found: number; 
+    notFound: Array<{ 
+      parent_category_id: number; 
+      sub_category_id?: number; 
+      abn_kind: AbnConditionKind; 
+      reason: string 
+    }> 
+  }> {
+    this.logger.log(`Fetching licence requirements for multiple categories: ${categoryRequests.length} categories`);
+
+    // Build the response structure
+    const response: LicenceRequirementsResponseDto = {
+      groups: {},
+      categories: []
+    };
+
+    const notFound: Array<{ 
+      parent_category_id: number; 
+      sub_category_id?: number; 
+      abn_kind: AbnConditionKind; 
+      reason: string 
+    }> = [];
+    let found = 0;
+
+    // Process each category request
+    for (const request of categoryRequests) {
+      const { parent_category_id, sub_category_id = 0, abn_kind } = request;
+      
+      try {
+        // Get requirements for this single category
+        const singleResponse = await this.getLicenceRequirementsWithAbn(
+          parent_category_id,
+          sub_category_id,
+          abn_kind
+        );
+
+        // Merge groups (avoid duplicates)
+        for (const [groupKey, group] of Object.entries(singleResponse.groups)) {
+          if (!response.groups[groupKey]) {
+            response.groups[groupKey] = group;
+          }
+        }
+
+        // Add categories
+        response.categories.push(...singleResponse.categories);
+        found++;
+        
+      } catch (error) {
+        // Handle individual category errors
+        if (error instanceof Error) {
+          if ((error as any).notFound) {
+            // Category not found - add to notFound list and continue
+            notFound.push({
+              parent_category_id,
+              sub_category_id,
+              abn_kind,
+              reason: error.message
+            });
+            this.logger.warn(`Category not found: ${error.message}`);
+          } else {
+            // Other error - log and continue with other categories
+            this.logger.error(`Error processing category ${parent_category_id}/${sub_category_id}: ${error.message}`);
+            notFound.push({
+              parent_category_id,
+              sub_category_id,
+              abn_kind,
+              reason: `Processing error: ${error.message}`
+            });
+          }
+        } else {
+          // Unknown error type
+          this.logger.error(`Unknown error processing category ${parent_category_id}/${sub_category_id}:`, error);
+          notFound.push({
+            parent_category_id,
+            sub_category_id,
+            abn_kind,
+            reason: 'Unknown processing error'
+          });
+        }
+      }
+    }
+
+    this.logger.log(`Successfully processed ${found} categories, ${notFound.length} not found`);
+    
+    return {
+      data: response,
+      found,
+      notFound
+    };
+  }
+
   private generateGroupKey(groupName: string): string {
     // Convert group name to a key format similar to the JSON
     return groupName.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
   }
 
-  async updateAbnConditions(fileContent: string): Promise<{ message: string; updated: boolean }> {
-    this.logger.log('Updating ABN conditions from uploaded file...');
+  async updateLicenceRequirements(licenceData: any): Promise<{ 
+    message: string; 
+    updated: boolean; 
+    processed: number; 
+    missing: Array<{ 
+      name: string; 
+      sub_category_name?: string; 
+      reason: string; 
+      type: 'parent' | 'sub' 
+    }> 
+  }> {
+    this.logger.log('Updating licence requirements from request body...');
 
     try {
-      // Parse the JSON content
-      const seedData: any = JSON.parse(fileContent);
-      
       // Validate the structure
-      if (!seedData.groups || !seedData.categories) {
-        throw new Error('Invalid file format. Expected "groups" and "categories" properties.');
+      if (!licenceData.groups || !licenceData.categories) {
+        throw new Error('Invalid data format. Expected "groups" and "categories" properties.');
       }
 
-      // Clear existing data to ensure clean update
-      await this.clearExistingAbnConditionsData();
+      // Process the data (append/update existing data)
+      this.logger.log('About to call processLicenceRequirementsData...');
+      const categoryResults = await this.processLicenceRequirementsData(licenceData);
+      this.logger.log(`processLicenceRequirementsData returned: processed=${categoryResults.processed}, missing=${categoryResults.missing.length}`);
 
-      // Load new data using the same logic as the loader
-      await this.loadAuthorities(seedData.groups);
-      await this.loadLicenceTypes(seedData.groups);
-      await this.loadLicenceRequirementGroups(seedData.groups);
-      await this.loadCategoryStates(seedData.categories);
-      await this.linkAllCategoryStatesToGroups(seedData.categories);
-
-      this.logger.log('ABN conditions updated successfully');
+      this.logger.log('Licence requirements updated successfully');
       return { 
-        message: 'ABN conditions updated successfully', 
-        updated: true 
+        message: 'Licence requirements updated successfully', 
+        updated: true,
+        processed: categoryResults.processed,
+        missing: categoryResults.missing
       };
 
     } catch (error) {
-      this.logger.error('Error updating ABN conditions:', error);
+      this.logger.error('Error updating licence requirements:', error);
+      
+      // Provide better error messages for common database issues
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      
+      if (errorMessage.includes('value too long for type character varying')) {
+        const fieldMatch = errorMessage.match(/column "([^"]+)"/);
+        const fieldName = fieldMatch ? fieldMatch[1] : 'unknown field';
+        const lengthMatch = errorMessage.match(/character varying\((\d+)\)/);
+        const maxLength = lengthMatch ? lengthMatch[1] : 'unknown';
+        
+        throw new Error(`Database field length exceeded: The field '${fieldName}' cannot exceed ${maxLength} characters. Please check your data and ensure all text fields are within the length limits.`);
+      }
+      
+      if (errorMessage && errorMessage.includes('duplicate key value violates unique constraint')) {
+        const constraintMatch = errorMessage.match(/constraint "([^"]+)"/);
+        const constraintName = constraintMatch ? constraintMatch[1] : 'unique constraint';
+        throw new Error(`Duplicate data detected: A record with this information already exists (violates ${constraintName}). The system prevents duplicate entries.`);
+      }
+      
+      if (errorMessage && errorMessage.includes('foreign key constraint')) {
+        const constraintMatch = errorMessage.match(/constraint "([^"]+)"/);
+        const constraintName = constraintMatch ? constraintMatch[1] : 'foreign key constraint';
+        throw new Error(`Reference error: The data references a record that doesn't exist (violates ${constraintName}). Please ensure all referenced data exists first.`);
+      }
+      
+      // Generic database error
+      if (errorMessage && errorMessage.includes('QueryFailedError')) {
+        throw new Error(`Database operation failed: ${errorMessage}. Please check your data format and try again.`);
+      }
+      
+      // Re-throw the original error if we can't provide a better message
       throw error;
     }
   }
 
-  private async clearExistingAbnConditionsData(): Promise<void> {
-    this.logger.log('Clearing existing ABN conditions data...');
+
+  async processLicenceRequirementsData(licenceData: any): Promise<{ 
+    processed: number; 
+    missing: Array<{ 
+      name: string; 
+      sub_category_name?: string; 
+      reason: string; 
+      type: 'parent' | 'sub' 
+    }> 
+  }> {
+    this.logger.log('Processing licence requirements data...');
+
+    try {
+      // Load authorities first (will create new ones if they don't exist)
+      await this.loadAuthorities(licenceData.groups);
+
+      // Load licence types (will create new ones if they don't exist)
+      await this.loadLicenceTypes(licenceData.groups);
+
+      // Load licence requirement groups (will create new ones if they don't exist)
+      await this.loadLicenceRequirementGroups(licenceData.groups);
+
+      // Load category states and related data (will create new ones if they don't exist)
+      this.logger.log('About to call loadCategoryStates...');
+      const categoryResults = await this.loadCategoryStates(licenceData.categories);
+      this.logger.log(`loadCategoryStates returned: processed=${categoryResults.processed}, missing=${categoryResults.missing.length}`);
+      
+      // Now link everything together (will create new links if they don't exist)
+      await this.linkAllCategoryStatesToGroups(licenceData.categories);
+
+      this.logger.log('Licence requirements data processed successfully');
+      return categoryResults;
+    } catch (error) {
+      this.logger.error('Error processing licence requirements data:', error);
+      throw error;
+    }
+  }
+
+  private async clearExistingLicenceRequirementsData(): Promise<void> {
+    this.logger.log('Clearing existing licence requirements data...');
     
     // Clear in reverse order of dependencies
     await this.categoryStateLicenceGroupRepo.clear();
@@ -251,7 +419,7 @@ export class LicenceRequirementService {
     await this.licenceRequirementGroupRepo.clear();
     await this.licenceTypeRepo.clear();
     
-    this.logger.log('Existing ABN conditions data cleared');
+    this.logger.log('Existing licence requirements data cleared');
   }
 
   private async loadAuthorities(groups: any): Promise<void> {
@@ -271,7 +439,9 @@ export class LicenceRequirementService {
           state: 'NSW' // Default state for now
         });
         await this.authorityRepo.save(authority);
-        this.logger.log(`Created authority: ${authorityName}`);
+        this.logger.log(`Created new authority: ${authorityName}`);
+      } else {
+        this.logger.log(`Authority already exists: ${authorityName}`);
       }
     }
   }
@@ -297,7 +467,9 @@ export class LicenceRequirementService {
           });
           
           await this.licenceTypeRepo.save(licenceType);
-          this.logger.log(`Created licence type: ${licenceClass.name}`);
+          this.logger.log(`Created new licence type: ${licenceClass.name}`);
+        } else {
+          this.logger.log(`Licence type already exists: ${licenceClass.name}`);
         }
       }
     }
@@ -307,13 +479,15 @@ export class LicenceRequirementService {
     this.logger.log(`Loading ${Object.keys(groups).length} licence requirement groups...`);
     
     for (const [groupKey, group] of Object.entries(groups)) {
+      // Check for existing group by KEY, not by name
       const existingGroup = await this.licenceRequirementGroupRepo.findOne({ 
-        where: { name: (group as any).name } 
+        where: { key: groupKey } 
       });
       
       if (!existingGroup) {
         const requirementGroup = this.licenceRequirementGroupRepo.create({
           name: (group as any).name,
+          key: groupKey, // Store the original key
           minRequired: (group as any).min_required,
           parentCategoryId: null,
           subCategoryId: null,
@@ -339,14 +513,59 @@ export class LicenceRequirementService {
           }
         }
       } else {
-        this.logger.log(`Licence requirement group already exists: ${(group as any).name}`);
+        this.logger.log(`Licence requirement group already exists: ${(group as any).name} (key: ${groupKey})`);
+        
+        // Check if we need to create new links to licence types
+        for (const licenceClass of (group as any).classes) {
+          const licenceType = await this.licenceTypeRepo.findOne({ 
+            where: { name: licenceClass.name } 
+          });
+          
+          if (licenceType) {
+            // Check if link already exists
+            const existingLink = await this.licenceRequirementGroupLicenceRepo.findOne({
+              where: {
+                licenceRequirementGroupId: existingGroup.id,
+                licenceTypeId: licenceType.id
+              }
+            });
+            
+            if (!existingLink) {
+              const junctionRecord = this.licenceRequirementGroupLicenceRepo.create({
+                licenceRequirementGroupId: existingGroup.id,
+                licenceTypeId: licenceType.id
+              });
+              
+              await this.licenceRequirementGroupLicenceRepo.save(junctionRecord);
+              this.logger.log(`Created new link for existing group ${(group as any).name} to licence type ${licenceClass.name}`);
+            } else {
+              this.logger.log(`Link already exists for group ${(group as any).name} to licence type ${licenceClass.name}`);
+            }
+          }
+        }
       }
     }
     
     this.logger.log(`Finished loading licence requirement groups`);
   }
 
-  private async loadCategoryStates(categories: any[]): Promise<void> {
+  private async loadCategoryStates(categories: any[]): Promise<{ 
+    processed: number; 
+    missing: Array<{ 
+      name: string; 
+      sub_category_name?: string; 
+      reason: string; 
+      type: 'parent' | 'sub' 
+    }> 
+  }> {
+    const missing: Array<{ 
+      name: string; 
+      sub_category_name?: string; 
+      reason: string; 
+      type: 'parent' | 'sub' 
+    }> = [];
+    let processed = 0;
+
     for (const category of categories) {
       if (category.is_parent) {
         const parentCategory = await this.parentCategoryRepo.findOne({ 
@@ -355,37 +574,151 @@ export class LicenceRequirementService {
         
         if (parentCategory) {
           await this.processCategoryState(category, parentCategory.id, null);
+          processed++;
+        } else {
+          missing.push({
+            name: category.name,
+            reason: `Parent category '${category.name}' not found in database`,
+            type: 'parent'
+          });
         }
       } else {
-        const subCategory = await this.subCategoryRepo.findOne({ 
-          where: { name: category.sub_category_name } 
+        // For sub-categories, we need to find both the parent category and sub-category
+        const parentCategory = await this.parentCategoryRepo.findOne({ 
+          where: { name: category.name } 
         });
         
-        if (subCategory) {
-          await this.processCategoryState(category, null, subCategory.id);
+        // Try to find sub-category by shortName first, then by name as fallback
+        let subCategory = await this.subCategoryRepo.findOne({ 
+          where: { shortName: category.sub_category_name } 
+        });
+        
+        if (!subCategory) {
+          subCategory = await this.subCategoryRepo.findOne({ 
+            where: { name: category.sub_category_name } 
+          });
+        }
+        
+        if (parentCategory && subCategory) {
+          // FIXED: Set both parent_category_id and sub_category_id for sub-categories
+          await this.processCategoryState(category, parentCategory.id, subCategory.id);
+          processed++;
+        } else {
+          let reason = '';
+          if (!parentCategory && !subCategory) {
+            reason = `Both parent category '${category.name}' and sub-category '${category.sub_category_name}' not found`;
+          } else if (!parentCategory) {
+            reason = `Parent category '${category.name}' not found`;
+          } else {
+            reason = `Sub-category '${category.sub_category_name}' not found`;
+          }
+          
+          missing.push({
+            name: category.name,
+            sub_category_name: category.sub_category_name,
+            reason,
+            type: 'sub'
+          });
+        }
+      }
+    }
+
+    return { processed, missing };
+  }
+
+  private async processCategoryState(category: any, parentCategoryId: number | null, subCategoryId: number | null): Promise<void> {
+    this.logger.log(`DEBUG: processCategoryState called for ${category.name}`);
+    for (const [stateCode, stateData] of Object.entries(category.states)) {
+      // Check if category state already exists
+      const existingCategoryState = await this.categoryStateRepo.findOne({
+        where: {
+          parentCategoryId,
+          subCategoryId,
+          state: stateCode
+        }
+      });
+      
+      if (!existingCategoryState) {
+        const categoryState = this.categoryStateRepo.create({
+          parentCategoryId,
+          subCategoryId,
+          state: stateCode,
+          licenceRequired: (stateData as any).licence_required,
+          licenceNote: (stateData as any).licence_note
+        });
+        
+        const savedCategoryState = await this.categoryStateRepo.save(categoryState);
+        this.logger.log(`Created new category state for ${category.name} - ${stateCode}`);
+
+        await this.createAbnConditions(savedCategoryState.id, (stateData as any).abn_conditions);
+      } else {
+        this.logger.log(`Category state already exists for ${category.name} - ${stateCode}`);
+        this.logger.log(`Existing category state ID: ${existingCategoryState.id}`);
+        this.logger.log(`ABN conditions data: ${JSON.stringify((stateData as any).abn_conditions)}`);
+        
+        // Update existing category state if needed
+        if (existingCategoryState.licenceRequired !== (stateData as any).licence_required || 
+            existingCategoryState.licenceNote !== (stateData as any).licence_note) {
+          existingCategoryState.licenceRequired = (stateData as any).licence_required;
+          existingCategoryState.licenceNote = (stateData as any).licence_note;
+          await this.categoryStateRepo.save(existingCategoryState);
+          this.logger.log(`Updated existing category state for ${category.name} - ${stateCode}`);
+        }
+        
+        // CRITICAL: Always process ABN conditions for existing category states
+        this.logger.log(`=== FORCING ABN CONDITIONS UPDATE ===`);
+        this.logger.log(`About to call updateAbnConditionsDirectly for category state ${existingCategoryState.id}`);
+        
+        // WORKING FIX: Direct database operations with explicit error handling
+        try {
+          this.logger.log(`Calling updateAbnConditionsDirectly with categoryStateId: ${existingCategoryState.id}`);
+          
+          // Direct method call with explicit parameters
+          const categoryStateId = existingCategoryState.id;
+          const abnConditionsData = (stateData as any).abn_conditions;
+          
+          this.logger.log(`Parameters: categoryStateId=${categoryStateId}, abnConditions=${JSON.stringify(abnConditionsData)}`);
+          
+          // CRITICAL: Force the method call
+          this.logger.log(`About to execute updateAbnConditionsDirectly...`);
+          
+          // ADDITIONAL DEBUGGING: Check if method exists
+          if (typeof this.updateAbnConditionsDirectly === 'function') {
+            this.logger.log(`Method exists, calling it...`);
+            await this.updateAbnConditionsDirectly(categoryStateId, abnConditionsData);
+            this.logger.log(`Successfully completed updateAbnConditionsDirectly for category state ${categoryStateId}`);
+          } else {
+            this.logger.error(`CRITICAL: Method updateAbnConditionsDirectly does not exist!`);
+            throw new Error('Method updateAbnConditionsDirectly does not exist');
+          }
+        } catch (error) {
+          this.logger.error(`CRITICAL ERROR in updateAbnConditionsDirectly:`, error);
+          throw error; // Re-throw to see the full error
         }
       }
     }
   }
 
-  private async processCategoryState(category: any, parentCategoryId: number | null, subCategoryId: number | null): Promise<void> {
-    for (const [stateCode, stateData] of Object.entries(category.states)) {
-      const categoryState = this.categoryStateRepo.create({
-        parentCategoryId,
-        subCategoryId,
-        state: stateCode,
-        licenceRequired: (stateData as any).licence_required,
-        licenceNote: (stateData as any).licence_note
-      });
-      
-      const savedCategoryState = await this.categoryStateRepo.save(categoryState);
-      this.logger.log(`Created category state for ${category.name} - ${stateCode}`);
+  private async updateAbnConditionsDirectly(categoryStateId: number, abnConditions: any): Promise<void> {
+    this.logger.log(`WORKING FIX: updateAbnConditionsDirectly called for category state ${categoryStateId}`);
+    this.logger.log(`ABN conditions input: ${JSON.stringify(abnConditions)}`);
+    
+    // First, remove ALL existing ABN conditions for this category state
+    this.logger.log(`Finding existing ABN conditions for category state ${categoryStateId}`);
+    const existingConditions = await this.categoryStateAbnConditionRepo.find({
+      where: { categoryStateId }
+    });
+    this.logger.log(`Found ${existingConditions.length} existing ABN conditions`);
 
-      await this.createAbnConditions(savedCategoryState.id, (stateData as any).abn_conditions);
+    if (existingConditions.length > 0) {
+      this.logger.log(`Removing ${existingConditions.length} existing ABN conditions`);
+      await this.categoryStateAbnConditionRepo.remove(existingConditions);
+      this.logger.log(`Successfully removed ${existingConditions.length} existing ABN conditions for category state ${categoryStateId}`);
+    } else {
+      this.logger.log(`No existing ABN conditions found for category state ${categoryStateId}`);
     }
-  }
 
-  private async createAbnConditions(categoryStateId: number, abnConditions: any): Promise<void> {
+    // Then create new ones based on the provided data
     const conditions = [
       { kind: AbnConditionKind.COMPANY, message: abnConditions.company },
       { kind: AbnConditionKind.INDIVIDUAL, message: abnConditions.individual },
@@ -394,8 +727,13 @@ export class LicenceRequirementService {
       { kind: AbnConditionKind.OTHER, message: abnConditions.other }
     ];
 
+    this.logger.log(`Processing ${conditions.length} condition types`);
+    let createdCount = 0;
+    
     for (let i = 0; i < conditions.length; i++) {
       const condition = conditions[i];
+      this.logger.log(`Processing condition ${i + 1}: kind=${condition.kind}, message=${condition.message}`);
+      
       if (condition.message) {
         const abnCondition = this.categoryStateAbnConditionRepo.create({
           categoryStateId,
@@ -405,9 +743,68 @@ export class LicenceRequirementService {
         });
         
         await this.categoryStateAbnConditionRepo.save(abnCondition);
-        this.logger.log(`Created ABN condition: ${condition.kind}`);
+        this.logger.log(`Created new ABN condition: ${condition.kind}`);
+        createdCount++;
+      } else {
+        this.logger.log(`Skipping condition ${condition.kind} - no message provided`);
       }
     }
+    
+    this.logger.log(`Finished processing ABN conditions. Created ${createdCount} new conditions.`);
+  }
+
+  private async createAbnConditions(categoryStateId: number, abnConditions: any): Promise<void> {
+    this.logger.log(`DEBUG: createAbnConditions called for category state ${categoryStateId}`);
+    this.logger.log(`ABN conditions input: ${JSON.stringify(abnConditions)}`);
+    
+    // First, remove ALL existing ABN conditions for this category state
+    this.logger.log(`Finding existing ABN conditions for category state ${categoryStateId}`);
+    const existingConditions = await this.categoryStateAbnConditionRepo.find({
+      where: { categoryStateId }
+    });
+    this.logger.log(`Found ${existingConditions.length} existing ABN conditions`);
+
+    if (existingConditions.length > 0) {
+      this.logger.log(`Removing ${existingConditions.length} existing ABN conditions`);
+      await this.categoryStateAbnConditionRepo.remove(existingConditions);
+      this.logger.log(`Successfully removed ${existingConditions.length} existing ABN conditions for category state ${categoryStateId}`);
+    } else {
+      this.logger.log(`No existing ABN conditions found for category state ${categoryStateId}`);
+    }
+
+    // Then create new ones based on the provided data
+    const conditions = [
+      { kind: AbnConditionKind.COMPANY, message: abnConditions.company },
+      { kind: AbnConditionKind.INDIVIDUAL, message: abnConditions.individual },
+      { kind: AbnConditionKind.PARTNERSHIP, message: abnConditions.partnership },
+      { kind: AbnConditionKind.TRUST, message: abnConditions.trust },
+      { kind: AbnConditionKind.OTHER, message: abnConditions.other }
+    ];
+
+    this.logger.log(`Processing ${conditions.length} condition types`);
+    let createdCount = 0;
+    
+    for (let i = 0; i < conditions.length; i++) {
+      const condition = conditions[i];
+      this.logger.log(`Processing condition ${i + 1}: kind=${condition.kind}, message=${condition.message}`);
+      
+      if (condition.message) {
+        const abnCondition = this.categoryStateAbnConditionRepo.create({
+          categoryStateId,
+          kind: condition.kind,
+          message: condition.message,
+          position: i + 1
+        });
+        
+        await this.categoryStateAbnConditionRepo.save(abnCondition);
+        this.logger.log(`Created new ABN condition: ${condition.kind}`);
+        createdCount++;
+      } else {
+        this.logger.log(`Skipping condition ${condition.kind} - no message provided`);
+      }
+    }
+    
+    this.logger.log(`Finished processing ABN conditions. Created ${createdCount} new conditions.`);
   }
 
   private async linkAllCategoryStatesToGroups(categories: any[]): Promise<void> {
@@ -427,9 +824,16 @@ export class LicenceRequirementService {
           });
         }
       } else {
-        const subCategory = await this.subCategoryRepo.findOne({ 
-          where: { name: category.sub_category_name } 
+        // Try to find sub-category by shortName first, then by name as fallback
+        let subCategory = await this.subCategoryRepo.findOne({ 
+          where: { shortName: category.sub_category_name } 
         });
+        
+        if (!subCategory) {
+          subCategory = await this.subCategoryRepo.findOne({ 
+            where: { name: category.sub_category_name } 
+          });
+        }
         
         if (subCategory) {
           categoryState = await this.categoryStateRepo.findOne({ 
@@ -446,36 +850,47 @@ export class LicenceRequirementService {
 
   private async linkLicenceRequirementGroups(categoryStateId: number, groupKeys: string[]): Promise<void> {
     for (const groupKey of groupKeys) {
-      let group = null;
-      
-      group = await this.licenceRequirementGroupRepo.findOne({ 
-        where: { name: groupKey } 
+      // FIXED: Look up groups by 'key' field, not 'name' field
+      let group = await this.licenceRequirementGroupRepo.findOne({ 
+        where: { key: groupKey } 
       });
       
-      if (!group) {
-        const readableName = this.convertGroupKeyToName(groupKey);
-        group = await this.licenceRequirementGroupRepo.findOne({ 
-          where: { name: readableName } 
-        });
-      }
-      
       if (group) {
-        const categoryStateLicenceGroup = this.categoryStateLicenceGroupRepo.create({
-          categoryStateId,
-          licenceRequirementGroupId: group.id
+        // Check if link already exists
+        const existingLink = await this.categoryStateLicenceGroupRepo.findOne({
+          where: {
+            categoryStateId,
+            licenceRequirementGroupId: group.id
+          }
         });
         
-        await this.categoryStateLicenceGroupRepo.save(categoryStateLicenceGroup);
-        this.logger.log(`Linked category state to licence requirement group: ${group.name}`);
+        if (!existingLink) {
+          const categoryStateLicenceGroup = this.categoryStateLicenceGroupRepo.create({
+            categoryStateId,
+            licenceRequirementGroupId: group.id
+          });
+          
+          await this.categoryStateLicenceGroupRepo.save(categoryStateLicenceGroup);
+          this.logger.log(`Created new link: category state to licence requirement group: ${group.name} (key: ${group.key})`);
+        } else {
+          this.logger.log(`Link already exists: category state to licence requirement group: ${group.name} (key: ${group.key})`);
+        }
 
+        // Update group's category references if needed
         const categoryState = await this.categoryStateRepo.findOne({ 
           where: { id: categoryStateId } 
         });
         
         if (categoryState) {
-          group.parentCategoryId = categoryState.parentCategoryId || null;
-          group.subCategoryId = categoryState.subCategoryId || null;
-          await this.licenceRequirementGroupRepo.save(group);
+          const needsUpdate = group.parentCategoryId !== (categoryState.parentCategoryId || null) || 
+                             group.subCategoryId !== (categoryState.subCategoryId || null);
+          
+          if (needsUpdate) {
+            group.parentCategoryId = categoryState.parentCategoryId || null;
+            group.subCategoryId = categoryState.subCategoryId || null;
+            await this.licenceRequirementGroupRepo.save(group);
+            this.logger.log(`Updated group ${group.name} (key: ${group.key}) category references`);
+          }
         }
       } else {
         this.logger.warn(`Could not find group for key: ${groupKey}`);
@@ -483,15 +898,4 @@ export class LicenceRequirementService {
     }
   }
 
-  private convertGroupKeyToName(groupKey: string): string {
-    const keyToNameMap: Record<string, string> = {
-      'arc_requirement': 'ARC requirement',
-      'nsw_air_conditioning_trade': 'NSW trade licence',
-      'nsw_air_conditioning_air_conditioners_trade': 'NSW trade licence',
-      'nsw_locksmiths_trade': 'NSW trade licence',
-      'nsw_locksmiths_24_7_emergency_trade': 'NSW trade licence'
-    };
-    
-    return keyToNameMap[groupKey] || groupKey;
-  }
 }

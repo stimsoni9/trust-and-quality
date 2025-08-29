@@ -1,7 +1,7 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { LicenceEntity } from './licencing/entity/licence.entity';
+import { LicenceEntity } from '../licence/entities/licence.entity';
 import { CategoryLoader } from './category/category.loader';
 import { AuthorityLoader } from './licencing/authority.loader';
 import { AbnConditionsLoader } from './licencing/abn-conditions.loader';

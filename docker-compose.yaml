@@ -33,7 +33,11 @@ services:
       MARKETPLACE_DB_NAME: trustandquality
       MARKETPLACE_DB_CONN_MAX: 5
       PORT: 3001
+      NODE_ENV: development
     ports:
       - "3001:3001"
+      - "9229:9229"
+    command:
+      ["node", "--inspect=0.0.0.0:9229", "dist/apps/licencing/src/main.js"]
 volumes:
   pgdata:

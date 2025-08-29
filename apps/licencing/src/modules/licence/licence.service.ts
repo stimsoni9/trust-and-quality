@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { LicenceEntity } from '../setup/licencing/entity/licence.entity';
+import { LicenceEntity } from './entities/licence.entity';
 
 @Injectable()
 export class LicenceService {

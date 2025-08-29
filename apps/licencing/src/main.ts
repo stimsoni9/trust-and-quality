@@ -10,6 +10,9 @@ async function bootstrap(): Promise<void> {
       whitelist: true,
       transform: true,
       forbidUnknownValues: false,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
     }),
   );
   await app.listen(process.env.PORT ? Number(process.env.PORT) : 3001);

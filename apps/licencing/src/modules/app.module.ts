@@ -4,16 +4,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from '@lib/shared';
 import { LicenceModule } from './licence/licence.module';
 import { SetupModule } from './setup/setup.module';
-import { ParentCategoryEntity } from './setup/category/entity/parent-category.entity';
-import { SubCategoryEntity } from './setup/category/entity/sub-category.entity';
+import { ParentCategoryEntity } from './shared/entities/parent-category.entity';
+import { SubCategoryEntity } from './shared/entities/sub-category.entity';
 import { HealthController } from './health.controller';
-import { AuthorityEntity } from './setup/licencing/entity/authority.entity';
-import { LicenceTypeEntity } from './setup/licencing/entity/licence-type.entity';
-import { LicenceRequirementGroupEntity } from './setup/licencing/entity/licence-requirement-group.entity';
-import { LicenceRequirementGroupLicenceEntity } from './setup/licencing/entity/licence-requirement-group-licence.entity';
-import { CategoryStateEntity } from './setup/licencing/entity/category-state.entity';
-import { CategoryStateLicenceGroupEntity } from './setup/licencing/entity/category-state-licence-group.entity';
-import { CategoryStateAbnConditionEntity } from './setup/licencing/entity/category-state-abn-condition.entity';
+import { AuthorityEntity } from './licence/entities/authority.entity';
+import { LicenceTypeEntity } from './licence/entities/licence-type.entity';
+import { LicenceRequirementGroupEntity } from './licence/entities/licence-requirement-group.entity';
+import { LicenceRequirementGroupLicenceEntity } from './licence/entities/licence-requirement-group-licence.entity';
+import { CategoryStateEntity } from './licence/entities/category-state.entity';
+import { CategoryStateLicenceGroupEntity } from './licence/entities/category-state-licence-group.entity';
+import { CategoryStateAbnConditionEntity } from './licence/entities/category-state-abn-condition.entity';
 
 @Module({
   imports: [
