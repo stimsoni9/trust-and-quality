@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabaseModule } from '@lib/shared';
-import { LicenceModule } from './licence/licence.module';
+import { LicenceRefactoredModule } from './licence/licence-refactored.module';
 import { SetupModule } from './setup/setup.module';
 import { ParentCategoryEntity } from './shared/entities/parent-category.entity';
 import { SubCategoryEntity } from './shared/entities/sub-category.entity';
@@ -33,8 +33,8 @@ import { CategoryStateAbnConditionEntity } from './licence/entities/category-sta
       CategoryStateLicenceGroupEntity,
       CategoryStateAbnConditionEntity
     ]),
+    LicenceRefactoredModule,
     SetupModule,
-    LicenceModule,
   ],
   controllers: [HealthController],
   providers: [],

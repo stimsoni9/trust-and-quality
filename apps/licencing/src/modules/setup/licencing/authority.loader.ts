@@ -25,6 +25,7 @@ export class AuthorityLoader {
 
     // The compiled file will live under dist/apps/licencing/src/modules/setup/licencing
     // so we resolve the JSON path relative to this file's directory at runtime.
+    // In the Docker container, the JSON file is copied to the same directory as the loader
     const jsonPath = join(__dirname, 'licensing_authorities.json');
     const raw = readFileSync(jsonPath, 'utf8');
     const parsed = JSON.parse(raw);

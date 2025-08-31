@@ -1,10 +1,10 @@
-import { Controller, Get, Post, Query, ParseIntPipe, ParseEnumPipe, Body, BadRequestException, NotFoundException } from '@nestjs/common';
+import { Controller, Get, Post, Query, ParseIntPipe, Body, BadRequestException, NotFoundException } from '@nestjs/common';
 import { LicenceService } from './licence.service';
-import { LicenceRequirementService } from './licence-requirement.service';
+import { LicenceRequirementService } from './application/services/licence-requirement.service';
 import { LicenceRequirementsResponseDto } from './dtos/licence-requirements-response.dto';
 import { UpdateLicenceRequirementsDto } from './dtos/update-licence-requirements.dto';
-import { LicenceRequirementsRequestDto } from './dtos/licence-requirements-request.dto';
-import { AbnConditionKind } from './entities/category-state-abn-condition.entity';
+import { AbnConditionKind } from './domain/entities/abn-condition.entity';
+import { CategoryRequestValidator } from './validation/category-request.validator';
 
 @Controller('licences')
 export class LicenceController {
@@ -26,11 +26,24 @@ export class LicenceController {
   @Get('requirements')
   async getLicenceRequirements(
     @Query('parent_category_id', ParseIntPipe) parentCategoryId: number,
-    @Query('abn_kind', new ParseEnumPipe(AbnConditionKind)) abnConditionKind: AbnConditionKind,
+    @Query('abn_kind') abnKind: string,
     @Query('sub_category_id') subCategoryId?: string,
+    @Query('state') state?: string,
   ): Promise<LicenceRequirementsResponseDto> {
-    const subCategoryIdNum = subCategoryId ? parseInt(subCategoryId, 10) : 0;
-    return this.licenceRequirementService.getLicenceRequirementsWithAbn(parentCategoryId, subCategoryIdNum, abnConditionKind);
+    // Use shared validation logic
+    const validated = CategoryRequestValidator.validateAndParseCategoryRequest({
+      parent_category_id: parentCategoryId,
+      sub_category_id: subCategoryId,
+      abn_kind: abnKind,
+      state
+    }, 'Single request');
+
+    return this.licenceRequirementService.getLicenceRequirementsWithAbn(
+      validated.parent_category_id,
+      validated.sub_category_id,
+      validated.abn_kind,
+      validated.state
+    );
   }
 
   @Get('requirements-batch')
@@ -42,68 +55,37 @@ export class LicenceController {
     notFound: Array<{ 
       parent_category_id: number; 
       sub_category_id?: number; 
-      abn_kind: AbnConditionKind; 
+      abn_kind: string; 
       reason: string 
     }> 
   }> {
     try {
-      // Validate that filter parameter exists
-      if (!filter) {
-        throw new BadRequestException('Missing required query parameter: filter');
-      }
+      // Step 1: Validate and parse batch filter (shared logic)
+      const rawCategories = CategoryRequestValidator.validateBatchFilter(filter);
 
-      // Parse JSON and validate structure
-      let categories: any[];
-      try {
-        categories = JSON.parse(filter);
-      } catch (parseError) {
-        throw new BadRequestException('Invalid filter parameter. Expected valid JSON array.');
-      }
+      // Step 2: Validate each category request (shared logic)
+      const validatedCategories = rawCategories.map((category, index) => {
+        return CategoryRequestValidator.validateAndParseCategoryRequest(
+          category, 
+          `Category ${index + 1}`
+        );
+      });
 
-      // Validate that it's an array
-      if (!Array.isArray(categories)) {
-        throw new BadRequestException('Filter parameter must be a JSON array.');
-      }
+      // Step 3: Call service with validated data
+      return this.licenceRequirementService.getLicenceRequirementsMultiple(validatedCategories);
 
-      // Validate each category object
-      for (let i = 0; i < categories.length; i++) {
-        const category = categories[i];
-        const index = i + 1;
-        
-        if (!category || typeof category !== 'object') {
-          throw new BadRequestException(`Category ${index}: Must be a valid object`);
-        }
-        
-        if (typeof category.parent_category_id !== 'number') {
-          throw new BadRequestException(`Category ${index}: parent_category_id must be a number, got ${typeof category.parent_category_id}`);
-        }
-        
-        if (category.sub_category_id !== undefined && typeof category.sub_category_id !== 'number') {
-          throw new BadRequestException(`Category ${index}: sub_category_id must be a number, got ${typeof category.sub_category_id}`);
-        }
-        
-        if (!category.abn_kind) {
-          throw new BadRequestException(`Category ${index}: abn_kind is required`);
-        }
-        
-        // Validate ABN kind enum values
-        const validAbnKinds = ['company', 'individual', 'partnership', 'trust', 'other'];
-        if (!validAbnKinds.includes(category.abn_kind)) {
-          throw new BadRequestException(`Category ${index}: abn_kind must be one of: ${validAbnKinds.join(', ')}. Got: ${category.abn_kind}`);
-        }
-      }
-
-      return this.licenceRequirementService.getLicenceRequirementsMultiple(categories);
     } catch (error) {
+      // Consistent error handling
+      if (error instanceof BadRequestException) {
+        throw error; // Re-throw validation errors as-is
+      }
+      
       const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
       throw new BadRequestException(`Filter validation failed: ${errorMessage}`);
     }
   }
 
-  @Get('test-multiple')
-  async testMultiple(): Promise<{ message: string }> {
-    return { message: 'Multiple requirements endpoint is working!' };
-  }
+
 
   @Post('update-licence-requirements')
   async updateLicenceRequirements(

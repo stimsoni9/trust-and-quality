@@ -1,0 +1,76 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/licence-schema",
+    "type": "object",
+    "properties": {
+      "groups": {
+        "type": "object",
+        "patternProperties": {
+          "^[a-zA-Z0-9_]+$": {
+            "type": "object",
+            "required": ["name", "min_required", "classes"],
+            "properties": {
+              "name": { "type": "string" },
+              "min_required": { "type": "integer", "minimum": 1 },
+              "classes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "state", "authority"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "state": { "type": "string" },
+                    "authority": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "categories": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["name", "is_parent", "states"],
+          "properties": {
+            "name": { "type": "string" },
+            "sub_category_name": { "type": "string" },
+            "is_parent": { "type": "boolean" },
+            "states": {
+              "type": "object",
+              "patternProperties": {
+                "^[A-Z]{2,3}$": {
+                  "type": "object",
+                  "required": ["licence_required", "licence_note", "abn_conditions", "groups"],
+                  "properties": {
+                    "licence_required": { "type": ["boolean", "null"] },
+                    "licence_note": { "type": "string" },
+                    "abn_conditions": {
+                      "type": "object",
+                      "required": ["company", "individual", "partnership", "trust"],
+                      "properties": {
+                        "company": { "type": "string" },
+                        "individual": { "type": "string" },
+                        "partnership": { "type": "string" },
+                        "trust": { "type": "string" }
+                      }
+                    },
+                    "groups": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    },
+    "required": ["groups", "categories"],
+    "additionalProperties": false
+  }
+  

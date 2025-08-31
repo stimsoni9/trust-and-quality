@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
-import { LicenceRequirementService } from '../../licence/licence-requirement.service';
+import { LicenceRequirementService } from '../../licence/application/services/licence-requirement.service';
 
 interface LicenceClass {
   name: string;
@@ -60,7 +60,7 @@ export class AbnConditionsLoader {
       const seedData: SeedData = JSON.parse(jsonData);
 
       // Use the licence service to process the data
-      await this.licenceRequirementService.processLicenceRequirementsData(seedData);
+      await this.licenceRequirementService.updateLicenceRequirements(seedData);
 
       this.logger.log('ABN conditions data loaded successfully');
     } catch (error) {

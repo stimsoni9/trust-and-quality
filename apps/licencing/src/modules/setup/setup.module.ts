@@ -15,22 +15,26 @@ import { CategoryStateEntity } from '../licence/entities/category-state.entity';
 import { CategoryStateLicenceGroupEntity } from '../licence/entities/category-state-licence-group.entity';
 import { CategoryStateAbnConditionEntity } from '../licence/entities/category-state-abn-condition.entity';
 import { AbnConditionsLoader } from './licencing/abn-conditions.loader';
-import { LicenceRequirementService } from '../licence/licence-requirement.service';
+import { LicenceRefactoredModule } from '../licence/licence-refactored.module';
+
 
 @Module({
-  imports: [TypeOrmModule.forFeature([
-    LicenceEntity, 
-    ParentCategoryEntity, 
-    SubCategoryEntity, 
-    AuthorityEntity,
-    LicenceTypeEntity,
-    LicenceRequirementGroupEntity,
-    LicenceRequirementGroupLicenceEntity,
-    CategoryStateEntity,
-    CategoryStateLicenceGroupEntity,
-    CategoryStateAbnConditionEntity
-  ])],
-  providers: [SetupService, CategoryLoader, AuthorityLoader, AbnConditionsLoader, LicenceRequirementService],
+  imports: [
+    TypeOrmModule.forFeature([
+      LicenceEntity, 
+      ParentCategoryEntity, 
+      SubCategoryEntity, 
+      AuthorityEntity,
+      LicenceTypeEntity,
+      LicenceRequirementGroupEntity,
+      LicenceRequirementGroupLicenceEntity,
+      CategoryStateEntity,
+      CategoryStateLicenceGroupEntity,
+      CategoryStateAbnConditionEntity
+    ]),
+    LicenceRefactoredModule,
+  ],
+  providers: [SetupService, CategoryLoader, AuthorityLoader, AbnConditionsLoader],
   controllers: [CategoryController],
 })
 export class SetupModule {}
