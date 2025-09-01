@@ -3,6 +3,12 @@ export class LicenceRequirementGroup {
     private readonly _name: string,
     private readonly _key: string,
     private readonly _minRequired: number,
+    private readonly _state: string,
+    private readonly _authorityName: string,
+    private readonly _abnCompany: string | null = null,
+    private readonly _abnIndividual: string | null = null,
+    private readonly _abnPartnership: string | null = null,
+    private readonly _abnTrust: string | null = null,
     private readonly _isActive: boolean = true,
     private readonly _parentCategoryId: number | null = null,
     private readonly _subCategoryId: number | null = null,
@@ -14,6 +20,12 @@ export class LicenceRequirementGroup {
   get name(): string { return this._name; }
   get key(): string { return this._key; }
   get minRequired(): number { return this._minRequired; }
+  get state(): string { return this._state; }
+  get authorityName(): string { return this._authorityName; }
+  get abnCompany(): string | null { return this._abnCompany; }
+  get abnIndividual(): string | null { return this._abnIndividual; }
+  get abnPartnership(): string | null { return this._abnPartnership; }
+  get abnTrust(): string | null { return this._abnTrust; }
   get isActive(): boolean { return this._isActive; }
   get parentCategoryId(): number | null { return this._parentCategoryId; }
   get subCategoryId(): number | null { return this._subCategoryId; }
@@ -57,7 +69,13 @@ export class LicenceRequirementGroup {
       this._name,
       this._key,
       this._minRequired,
-      true,
+      this._state,
+      this._authorityName,
+      this._abnCompany,
+      this._abnIndividual,
+      this._abnPartnership,
+      this._abnTrust,
+      true, // isActive
       this._parentCategoryId,
       this._subCategoryId,
       this._id
@@ -69,7 +87,13 @@ export class LicenceRequirementGroup {
       this._name,
       this._key,
       this._minRequired,
-      false,
+      this._state,
+      this._authorityName,
+      this._abnCompany,
+      this._abnIndividual,
+      this._abnPartnership,
+      this._abnTrust,
+      false, // isActive
       this._parentCategoryId,
       this._subCategoryId,
       this._id
@@ -85,6 +109,12 @@ export class LicenceRequirementGroup {
       this._name,
       this._key,
       this._minRequired,
+      this._state,
+      this._authorityName,
+      this._abnCompany,
+      this._abnIndividual,
+      this._abnPartnership,
+      this._abnTrust,
       this._isActive,
       parentCategoryId,
       null, // Clear sub-category assignment
@@ -101,6 +131,12 @@ export class LicenceRequirementGroup {
       this._name,
       this._key,
       this._minRequired,
+      this._state,
+      this._authorityName,
+      this._abnCompany,
+      this._abnIndividual,
+      this._abnPartnership,
+      this._abnTrust,
       this._isActive,
       parentCategoryId,
       subCategoryId,
@@ -117,6 +153,12 @@ export class LicenceRequirementGroup {
       this._name,
       this._key,
       newMinRequired,
+      this._state,
+      this._authorityName,
+      this._abnCompany,
+      this._abnIndividual,
+      this._abnPartnership,
+      this._abnTrust,
       this._isActive,
       this._parentCategoryId,
       this._subCategoryId,
@@ -143,7 +185,13 @@ export class LicenceRequirementGroup {
       name,
       key,
       minRequired,
-      true,
+      'NSW', // Default state
+      'Unknown', // Default authority
+      null, // abnCompany
+      null, // abnIndividual
+      null, // abnPartnership
+      null, // abnTrust
+      true, // isActive
       parentCategoryId || null,
       subCategoryId || null
     );

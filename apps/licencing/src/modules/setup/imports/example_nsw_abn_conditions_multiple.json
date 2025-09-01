@@ -3,337 +3,434 @@
     "arc_requirement": {
       "name": "ARC requirement",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Air Conditioning",
-          "state": "National",
-          "authority": "Australian Refrigeration Council"
+      "state": "National",
+      "authority": {
+        "name": "Australian Refrigeration Council (ARC)",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Air Conditioning"
       ]
     },
+
     "nsw_air_conditioning_trade": {
       "name": "NSW trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "NSW",
-          "authority": "NSW Fair Trading"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "NSW",
-          "authority": "NSW Fair Trading"
+      "state": "NSW",
+      "authority": {
+        "name": "NSW Fair Trading",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "qld_air_conditioning_trade": {
       "name": "QLD trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "QLD",
-          "authority": "Queensland Building and Construction Commission - QBCC (Queensland Building & Construction Commission), Electrical Safety Office Queensland, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "QLD",
-          "authority": "Queensland Building and Construction Commission - QBCC (Queensland Building & Construction Commission), Electrical Safety Office Queensland, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Plumbing",
-          "state": "QLD",
-          "authority": "Queensland Building and Construction Commission - QBCC (Queensland Building & Construction Commission), Electrical Safety Office Queensland, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "QLD",
+      "authority": {
+        "name": "QBCC / Electrical Safety Office QLD / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration",
+        "Plumbing"
       ]
     },
+
     "vic_air_conditioning_trade": {
       "name": "VIC trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "VIC",
-          "authority": "Energy Safe VIC, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L, Building & Plumbing Commission VIC - Plumbing"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "VIC",
-          "authority": "Energy Safe VIC, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L, Building & Plumbing Commission VIC - Plumbing"
+      "state": "VIC",
+      "authority": {
+        "name": "Energy Safe Victoria / Victorian Building Authority (Plumbing) / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "sa_air_conditioning_trade": {
       "name": "SA trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "SA",
-          "authority": "SA Office of Consumer & Business Affairs, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "SA",
-          "authority": "SA Office of Consumer & Business Affairs, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "SA",
+      "authority": {
+        "name": "CBS SA / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "wa_air_conditioning_trade": {
       "name": "WA trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "WA",
-          "authority": "Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L, WA DEMIRS"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "WA",
-          "authority": "Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L, WA DEMIRS"
+      "state": "WA",
+      "authority": {
+        "name": "WA DEMIRS / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "tas_air_conditioning_trade": {
       "name": "TAS trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "TAS",
-          "authority": "\"CBOS - Consumer, Building and Occupational Services - TAS\", Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "TAS",
-          "authority": "\"CBOS - Consumer, Building and Occupational Services - TAS\", Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "TAS",
+      "authority": {
+        "name": "CBOS TAS / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "nt_air_conditioning_trade": {
       "name": "NT trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "NT",
-          "authority": "NT Electrical Workers and Contractors Licensing Board, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "NT",
-          "authority": "NT Electrical Workers and Contractors Licensing Board, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "NT",
+      "authority": {
+        "name": "NT Electrical Workers & Contractors Licensing Board / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "act_air_conditioning_trade": {
       "name": "ACT trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "ACT",
-          "authority": "Access Canberra - Access Canberra - Electrician, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "ACT",
-          "authority": "Access Canberra - Access Canberra - Electrician, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "ACT",
+      "authority": {
+        "name": "Access Canberra / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "nsw_air_conditioning_evaporative_cooling_trade": {
       "name": "NSW trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "NSW",
-          "authority": "NSW Fair Trading"
-        },
-        {
-          "name": "Plumbing",
-          "state": "NSW",
-          "authority": "NSW Fair Trading"
+      "state": "NSW",
+      "authority": {
+        "name": "NSW Fair Trading",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Plumbing"
       ]
     },
+
     "sa_air_conditioning_evaporative_cooling_trade": {
       "name": "SA trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "SA",
-          "authority": "SA Office of Consumer & Business Affairs, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Plumbing",
-          "state": "SA",
-          "authority": "SA Office of Consumer & Business Affairs, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "SA",
+      "authority": {
+        "name": "CBS SA / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Plumbing"
       ]
     },
+
     "wa_air_conditioning_evaporative_cooling_trade": {
       "name": "WA trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "WA",
-          "authority": "Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L, WA DEMIRS"
+      "state": "WA",
+      "authority": {
+        "name": "WA DEMIRS / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     },
+
     "tas_air_conditioning_evaporative_cooling_trade": {
       "name": "TAS trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "TAS",
-          "authority": "\"CBOS - Consumer, Building and Occupational Services - TAS\", Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "TAS",
+      "authority": {
+        "name": "CBOS TAS / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     },
+
     "nt_air_conditioning_evaporative_cooling_trade": {
       "name": "NT trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "NT",
-          "authority": "NT Electrical Workers and Contractors Licensing Board, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Plumbing",
-          "state": "NT",
-          "authority": "NT Electrical Workers and Contractors Licensing Board, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "NT",
+      "authority": {
+        "name": "NT Electrical Workers & Contractors Licensing Board / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Plumbing"
       ]
     },
+
     "act_air_conditioning_evaporative_cooling_trade": {
       "name": "ACT trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "ACT",
-          "authority": "Access Canberra - Access Canberra - Electrician, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "ACT",
+      "authority": {
+        "name": "Access Canberra / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     },
+
     "qld_air_conditioning_air_conditioner_cleaning_trade": {
       "name": "QLD trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "QLD",
-          "authority": "Queensland Building and Construction Commission - QBCC (Queensland Building & Construction Commission), Electrical Safety Office Queensland, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
-        },
-        {
-          "name": "Refrigeration",
-          "state": "QLD",
-          "authority": "Queensland Building and Construction Commission - QBCC (Queensland Building & Construction Commission), Electrical Safety Office Queensland, Australian Refrigeration Council - ARC (Business) - license starts with AU, Australian Refrigeration Council - ARC (Individual) - license starts with L"
+      "state": "QLD",
+      "authority": {
+        "name": "QBCC / Electrical Safety Office QLD / ARC",
+        "abn_conditions": {
+          "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "nsw_air_conditioning_suppliers_trade": {
       "name": "NSW trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "NSW",
-          "authority": ""
+      "state": "NSW",
+      "authority": {
+        "name": "NSW Fair Trading",
+        "abn_conditions": {
+          "company": "Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     },
+
     "qld_air_conditioning_suppliers_trade": {
       "name": "QLD trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "QLD",
-          "authority": ""
-        },
-        {
-          "name": "Refrigeration",
-          "state": "QLD",
-          "authority": ""
-        },
-        {
-          "name": "Plumbing",
-          "state": "QLD",
-          "authority": ""
+      "state": "QLD",
+      "authority": {
+        "name": "QBCC / Electrical Safety Office QLD",
+        "abn_conditions": {
+          "company": "Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration",
+        "Plumbing"
       ]
     },
+
     "sa_air_conditioning_suppliers_trade": {
       "name": "SA trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "SA",
-          "authority": ""
+      "state": "SA",
+      "authority": {
+        "name": "CBS SA",
+        "abn_conditions": {
+          "company": "Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     },
+
     "wa_air_conditioning_suppliers_trade": {
       "name": "WA trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "WA",
-          "authority": ""
+      "state": "WA",
+      "authority": {
+        "name": "WA DEMIRS",
+        "abn_conditions": {
+          "company": "Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     },
+
     "tas_air_conditioning_suppliers_trade": {
       "name": "TAS trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "TAS",
-          "authority": ""
+      "state": "TAS",
+      "authority": {
+        "name": "CBOS TAS",
+        "abn_conditions": {
+          "company": "Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     },
+
     "nt_air_conditioning_suppliers_trade": {
       "name": "NT trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "NT",
-          "authority": ""
-        },
-        {
-          "name": "Refrigeration",
-          "state": "NT",
-          "authority": ""
+      "state": "NT",
+      "authority": {
+        "name": "NT Electrical Workers & Contractors Licensing Board",
+        "abn_conditions": {
+          "company": "Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician",
+        "Refrigeration"
       ]
     },
+
     "act_air_conditioning_suppliers_trade": {
       "name": "ACT trade licence",
       "min_required": 1,
-      "classes": [
-        {
-          "name": "Electrician",
-          "state": "ACT",
-          "authority": ""
+      "state": "ACT",
+      "authority": {
+        "name": "Access Canberra",
+        "abn_conditions": {
+          "company": "Must supply a licence that is in the Company's ABN Entity Name",
+          "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
+          "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
+          "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
         }
+      },
+      "classes": [
+        "Electrician"
       ]
     }
   },
+
   "categories": [
     {
       "name": "Air Conditioning",
@@ -342,117 +439,46 @@
         "NSW": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "nsw_air_conditioning_trade"]
         },
         "QLD": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "qld_air_conditioning_trade"]
         },
         "VIC": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "sa_air_conditioning_trade"]
         },
         "WA": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "wa_air_conditioning_trade"]
         },
         "TAS": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "tas_air_conditioning_trade"]
         },
         "NT": {
           "licence_required": true,
           "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "nt_air_conditioning_trade"]
         },
         "ACT": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "act_air_conditioning_trade"]
         }
       }
     },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Air Conditioners",
@@ -461,236 +487,46 @@
         "NSW": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "nsw_air_conditioning_trade"]
         },
         "QLD": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "qld_air_conditioning_trade"]
         },
         "VIC": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "sa_air_conditioning_trade"]
         },
         "WA": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "wa_air_conditioning_trade"]
         },
         "TAS": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "tas_air_conditioning_trade"]
         },
         "NT": {
           "licence_required": true,
           "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "nt_air_conditioning_trade"]
         },
         "ACT": {
           "licence_required": true,
           "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
+          "groups": ["arc_requirement", "act_air_conditioning_trade"]
         }
       }
     },
-    {
-      "name": "Air Conditioning",
-      "sub_category_name": "Ducted",
-      "is_parent": false,
-      "states": {
-        "NSW": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
-        },
-        "QLD": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
-        },
-        "VIC": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
-        },
-        "SA": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
-        },
-        "WA": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
-        },
-        "TAS": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
-        },
-        "NT": {
-          "licence_required": true,
-          "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
-        },
-        "ACT": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
-        }
-      }
-    },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Evaporative Cooling",
@@ -699,117 +535,46 @@
         "NSW": {
           "licence_required": true,
           "licence_note": "Needs either QBCC Plumbing Contractor Licence or Electrical Contractor/Restricted Electrical Licence",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_evaporative_cooling_trade"
-          ]
+          "groups": ["nsw_air_conditioning_evaporative_cooling_trade"]
         },
         "QLD": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
+          "licence_note": "Must have either VIC Plumbing (Refrigerated Air‑conditioning) or VIC EnergySafe Electrical Contractor/D Licence. **VIC Energysafe Electrician A licence does not cover this category.",
+          "groups": ["qld_air_conditioning_trade"]
         },
         "VIC": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have either an Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "licence_note": "Must have either an Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air‑Conditioning Licence.",
+          "groups": ["vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have either an Electrical Contractor/Worker Licence or Plumbing Contractor Licence.",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_evaporative_cooling_trade"
-          ]
+          "licence_note": "Must have either an Electrical Contractor/Worker Licence or a Plumbing Contractor Licence.",
+          "groups": ["sa_air_conditioning_evaporative_cooling_trade"]
         },
         "WA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have an Electrical Contractor Licence",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_evaporative_cooling_trade"
-          ]
+          "licence_note": "Must have an Electrical Contractor Licence.",
+          "groups": ["wa_air_conditioning_evaporative_cooling_trade"]
         },
         "TAS": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_evaporative_cooling_trade"
-          ]
+          "licence_note": "Must have 2 licences: ARC and Electrical Contractor.",
+          "groups": ["tas_air_conditioning_evaporative_cooling_trade"]
         },
         "NT": {
           "licence_required": true,
-          "licence_note": "NSW Fair Trading Licence Electrical or Plumbing",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_evaporative_cooling_trade"
-          ]
+          "licence_note": "NSW Fair Trading Licence Electrical or Plumbing.",
+          "groups": ["nt_air_conditioning_evaporative_cooling_trade"]
         },
         "ACT": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have CBS SA - Electrical Contractor Licence to be in this category.",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_evaporative_cooling_trade"
-          ]
+          "licence_note": "Must have Electrical Contractor Licence.",
+          "groups": ["act_air_conditioning_evaporative_cooling_trade"]
         }
       }
     },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Installation",
@@ -817,118 +582,47 @@
       "states": {
         "NSW": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
+          "licence_note": "Must have ARC and Electrical Contractor or Restricted Electrical.",
+          "groups": ["arc_requirement", "nsw_air_conditioning_trade"]
         },
         "QLD": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus either VIC Plumbing (Refrigerated AC) or VIC EnergySafe Electrical Contractor/D Licence.",
+          "groups": ["arc_requirement", "qld_air_conditioning_trade"]
         },
         "VIC": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Unrestricted Electrical or Restricted – Electrotechnology Systems Refrigeration & Air‑Conditioning.",
+          "groups": ["arc_requirement", "vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor/Worker.",
+          "groups": ["arc_requirement", "sa_air_conditioning_trade"]
         },
         "WA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor or Restricted Electrical.",
+          "groups": ["arc_requirement", "wa_air_conditioning_trade"]
         },
         "TAS": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "tas_air_conditioning_trade"]
         },
         "NT": {
           "licence_required": true,
-          "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrician or Air Conditioning or Refrigeration licence.",
+          "groups": ["arc_requirement", "nt_air_conditioning_trade"]
         },
         "ACT": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "act_air_conditioning_trade"]
         }
       }
     },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Refrigeration",
@@ -936,237 +630,47 @@
       "states": {
         "NSW": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor/Restricted Electrical.",
+          "groups": ["arc_requirement", "nsw_air_conditioning_trade"]
         },
         "QLD": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus either VIC Plumbing (Refrigerated AC) or VIC EnergySafe Electrical Contractor/D Licence.",
+          "groups": ["arc_requirement", "qld_air_conditioning_trade"]
         },
         "VIC": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Unrestricted Electrical or Restricted – Electrotechnology Systems Refrigeration & Air‑Conditioning.",
+          "groups": ["arc_requirement", "vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor/Worker.",
+          "groups": ["arc_requirement", "sa_air_conditioning_trade"]
         },
         "WA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor or Restricted Electrical.",
+          "groups": ["arc_requirement", "wa_air_conditioning_trade"]
         },
         "TAS": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "tas_air_conditioning_trade"]
         },
         "NT": {
           "licence_required": true,
-          "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrician or Air Conditioning or Refrigeration licence.",
+          "groups": ["arc_requirement", "nt_air_conditioning_trade"]
         },
         "ACT": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "act_air_conditioning_trade"]
         }
       }
     },
-    {
-      "name": "Air Conditioning",
-      "sub_category_name": "Repairs & Maintenance",
-      "is_parent": false,
-      "states": {
-        "NSW": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
-        },
-        "QLD": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
-        },
-        "VIC": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
-        },
-        "SA": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
-        },
-        "WA": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
-        },
-        "TAS": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
-        },
-        "NT": {
-          "licence_required": true,
-          "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
-        },
-        "ACT": {
-          "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
-        }
-      }
-    },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Reverse Cycle",
@@ -1174,118 +678,47 @@
       "states": {
         "NSW": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor/Restricted Electrical.",
+          "groups": ["arc_requirement", "nsw_air_conditioning_trade"]
         },
         "QLD": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus either VIC Plumbing (Refrigerated AC) or VIC EnergySafe Electrical Contractor/D Licence.",
+          "groups": ["arc_requirement", "qld_air_conditioning_trade"]
         },
         "VIC": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Unrestricted Electrical or Restricted – Electrotechnology Systems Refrigeration & Air‑Conditioning.",
+          "groups": ["arc_requirement", "vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor/Worker.",
+          "groups": ["arc_requirement", "sa_air_conditioning_trade"]
         },
         "WA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor or Restricted Electrical.",
+          "groups": ["arc_requirement", "wa_air_conditioning_trade"]
         },
         "TAS": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "tas_air_conditioning_trade"]
         },
         "NT": {
           "licence_required": true,
-          "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrician or Air Conditioning or Refrigeration licence.",
+          "groups": ["arc_requirement", "nt_air_conditioning_trade"]
         },
         "ACT": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "act_air_conditioning_trade"]
         }
       }
     },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Split System",
@@ -1293,118 +726,47 @@
       "states": {
         "NSW": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor/Restricted Electrical.",
+          "groups": ["arc_requirement", "nsw_air_conditioning_trade"]
         },
         "QLD": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus either VIC Plumbing (Refrigerated AC) or VIC EnergySafe Electrical Contractor/D Licence.",
+          "groups": ["arc_requirement", "qld_air_conditioning_trade"]
         },
         "VIC": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Unrestricted Electrical or Restricted – Electrotechnology Systems Refrigeration & Air‑Conditioning.",
+          "groups": ["arc_requirement", "vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor/Worker.",
+          "groups": ["arc_requirement", "sa_air_conditioning_trade"]
         },
         "WA": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor or Restricted Electrical.",
+          "groups": ["arc_requirement", "wa_air_conditioning_trade"]
         },
         "TAS": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "tas_air_conditioning_trade"]
         },
         "NT": {
           "licence_required": true,
-          "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrician or Air Conditioning or Refrigeration licence.",
+          "groups": ["arc_requirement", "nt_air_conditioning_trade"]
         },
         "ACT": {
           "licence_required": true,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
+          "licence_note": "ARC plus Electrical Contractor.",
+          "groups": ["arc_requirement", "act_air_conditioning_trade"]
         }
       }
     },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Air Conditioner Cleaning",
@@ -1412,118 +774,47 @@
       "states": {
         "NSW": {
           "licence_required": false,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "nsw_air_conditioning_trade"]
         },
         "QLD": {
           "licence_required": false,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_air_conditioner_cleaning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "qld_air_conditioning_air_conditioner_cleaning_trade"]
         },
         "VIC": {
           "licence_required": false,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": false,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "sa_air_conditioning_trade"]
         },
         "WA": {
           "licence_required": false,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "wa_air_conditioning_trade"]
         },
         "TAS": {
           "licence_required": false,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "tas_air_conditioning_trade"]
         },
         "NT": {
           "licence_required": true,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "nt_air_conditioning_trade"]
         },
         "ACT": {
           "licence_required": false,
-          "licence_note": "Category can be added without a licence however, condition applies:\n **Condition - Licence is required for Accessing, disconnecting, or interfering with any refrigerant circuit (e.g. coil cleaning that requires dismantling parts with refrigerant).",
-          "abn_conditions": {
-            "company": "Company ABN – Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Individual/Sole Trader ABN – Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Partnership ABN – Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Trust ABN – Must supply a licence under the Trustee of the Trust (can be company or individual, T&Q will ask for a trust deed)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_trade"
-          ]
+          "licence_note": "Category can be added without a licence; licence required if accessing/disconnecting/interfering with refrigerant circuit.",
+          "groups": ["arc_requirement", "act_air_conditioning_trade"]
         }
       }
     },
+
     {
       "name": "Air Conditioning",
       "sub_category_name": "Suppliers",
@@ -1531,115 +822,43 @@
       "states": {
         "NSW": {
           "licence_required": false,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC\n2. Electrical contractor license or Restricted Electrical Work License\n\nCondition - QBCC Mechanical Services licence is also required for AC jobs over $3,300.00\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nsw_air_conditioning_suppliers_trade"
-          ]
+          "licence_note": "Can go in the Suppliers sub category without a licence.",
+          "groups": ["nsw_air_conditioning_suppliers_trade"]
         },
         "QLD": {
           "licence_required": false,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. either VIC Plumbing (Refrigerated Air-conditioning) licence or VIC EnergySafe Electrical Contractor or D Licence\n**VIC Energysafe Electrician A licence does not cover this category.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "qld_air_conditioning_suppliers_trade"
-          ]
+          "licence_note": "Can go in the Suppliers sub category without a licence.",
+          "groups": ["qld_air_conditioning_suppliers_trade"]
         },
         "VIC": {
           "licence_required": false,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence and \n2. Unrestricted Electrical Licence or Restricted – Electrotechnology Systems Refrigeration and Air-Conditioning Licence.\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "vic_air_conditioning_trade"
-          ]
+          "licence_note": "Can go in the Suppliers sub category without a licence.",
+          "groups": ["vic_air_conditioning_trade"]
         },
         "SA": {
           "licence_required": false,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor or Worker Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "sa_air_conditioning_suppliers_trade"
-          ]
+          "licence_note": "Can go in the Suppliers sub category without a licence.",
+          "groups": ["sa_air_conditioning_suppliers_trade"]
         },
         "WA": {
           "licence_required": false,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence or Restricted Electrical Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "wa_air_conditioning_suppliers_trade"
-          ]
+          "licence_note": "Can go in the Suppliers sub category without a licence.",
+          "groups": ["wa_air_conditioning_suppliers_trade"]
         },
         "TAS": {
           "licence_required": false,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "tas_air_conditioning_suppliers_trade"
-          ]
+          "licence_note": "Can go in the Suppliers sub category without a licence.",
+          "groups": ["tas_air_conditioning_suppliers_trade"]
         },
         "NT": {
           "licence_required": true,
-          "licence_note": "Needs ARC and NSW Fair Trading Licence (Electrician or Air Conditioning or Refrigeration). Needs contractors license\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "nt_air_conditioning_suppliers_trade"
-          ]
+          "licence_note": "NT may require a trade licence depending on activity.",
+          "groups": ["nt_air_conditioning_suppliers_trade"]
         },
         "ACT": {
           "licence_required": false,
-          "licence_note": "NOTE: Must have 2 licences to be in this category.\n1. ARC Licence\n2. CBS SA - Electrical Contractor Licence\n\nCan go in the Suppliers sub category without a license",
-          "abn_conditions": {
-            "company": "Must supply a licence that is in the Company's ABN Entity Name",
-            "individual": "Must supply a licence that is in the Individual/Sole Trader's Name",
-            "partnership": "Must supply a licence under the Partnership's ABN Entity Name",
-            "trust": "Must supply a licence under the Trustee of the Trust (can be company or individual, trust deed may be required)"
-          },
-          "groups": [
-            "arc_requirement",
-            "act_air_conditioning_suppliers_trade"
-          ]
+          "licence_note": "Can go in the Suppliers sub category without a licence.",
+          "groups": ["act_air_conditioning_suppliers_trade"]
         }
       }
     }

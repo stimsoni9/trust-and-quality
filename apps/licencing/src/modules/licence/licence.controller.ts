@@ -1,22 +1,17 @@
 import { Controller, Get, Post, Query, ParseIntPipe, Body, BadRequestException, NotFoundException } from '@nestjs/common';
-import { LicenceService } from './licence.service';
 import { LicenceRequirementService } from './application/services/licence-requirement.service';
 import { LicenceRequirementsResponseDto } from './dtos/licence-requirements-response.dto';
 import { UpdateLicenceRequirementsDto } from './dtos/update-licence-requirements.dto';
 import { AbnConditionKind } from './domain/entities/abn-condition.entity';
 import { CategoryRequestValidator } from './validation/category-request.validator';
+import { UpdateLicenceRequirementsValidator } from './validation/update-requirements.validator';
+import { ErrorHandler } from './utils/error-handler.util';
 
 @Controller('licences')
 export class LicenceController {
   constructor(
-    private readonly licenceService: LicenceService,
     private readonly licenceRequirementService: LicenceRequirementService,
   ) {}
-
-  @Get()
-  async list() {
-    return this.licenceService.findAll();
-  }
 
   @Get('health')
   health(): { status: string } {
@@ -75,13 +70,8 @@ export class LicenceController {
       return this.licenceRequirementService.getLicenceRequirementsMultiple(validatedCategories);
 
     } catch (error) {
-      // Consistent error handling
-      if (error instanceof BadRequestException) {
-        throw error; // Re-throw validation errors as-is
-      }
-      
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
-      throw new BadRequestException(`Filter validation failed: ${errorMessage}`);
+      // Use centralized error handling
+      ErrorHandler.handleFilterError(error);
     }
   }
 
@@ -89,7 +79,7 @@ export class LicenceController {
 
   @Post('update-licence-requirements')
   async updateLicenceRequirements(
-    @Body() updateDto: UpdateLicenceRequirementsDto,
+    @Body() updateDto: any, // DTO validation disabled: class-validator doesn't support Record<string, Type> properly
   ): Promise<{ 
     message: string; 
     updated: boolean; 
@@ -102,66 +92,13 @@ export class LicenceController {
     }> 
   }> {
     try {
-      // Validate that request body exists
-      if (!updateDto) {
-        throw new BadRequestException('Request body is required for this endpoint');
-      }
-
-      // Validate that categories array exists
-      if (!updateDto.categories || !Array.isArray(updateDto.categories)) {
-        throw new BadRequestException('Request body must contain a categories array');
-      }
-
-      // Validate each category object
-      for (let i = 0; i < updateDto.categories.length; i++) {
-        const category = updateDto.categories[i];
-        const index = i + 1;
-        
-        if (!category || typeof category !== 'object') {
-          throw new BadRequestException(`Category ${index}: Must be a valid object`);
-        }
-        
-        if (!category.name || typeof category.name !== 'string') {
-          throw new BadRequestException(`Category ${index}: name is required and must be a string`);
-        }
-        
-        if (typeof category.is_parent !== 'boolean') {
-          throw new BadRequestException(`Category ${index}: is_parent must be a boolean, got ${typeof category.is_parent}`);
-        }
-        
-        if (!category.states || typeof category.states !== 'object') {
-          throw new BadRequestException(`Category ${index}: states object is required`);
-        }
-        
-        // Validate states object
-        for (const [stateKey, stateData] of Object.entries(category.states)) {
-          if (!stateData || typeof stateData !== 'object') {
-            throw new BadRequestException(`Category ${index}, state ${stateKey}: Must be a valid object`);
-          }
-          
-          if (typeof stateData.licence_required !== 'boolean') {
-            throw new BadRequestException(`Category ${index}, state ${stateKey}: licence_required must be a boolean`);
-          }
-          
-          if (!stateData.abn_conditions || typeof stateData.abn_conditions !== 'object') {
-            throw new BadRequestException(`Category ${index}, state ${stateKey}: abn_conditions object is required`);
-          }
-          
-          if (!Array.isArray(stateData.groups)) {
-            throw new BadRequestException(`Category ${index}, state ${stateKey}: groups must be an array`);
-          }
-        }
-      }
-
+      // Use centralized validation (eliminates ~50 lines of duplicate validation code)
+      UpdateLicenceRequirementsValidator.validate(updateDto);
+      
       return this.licenceRequirementService.updateLicenceRequirements(updateDto);
     } catch (error) {
-      if (error instanceof BadRequestException) {
-        throw error; // Re-throw BadRequestException as-is
-      }
-      if (error instanceof Error) {
-        throw new BadRequestException(`Update validation failed: ${error.message}`);
-      }
-      throw new BadRequestException('Update validation failed: Unknown error occurred');
+      // Use centralized error handling
+      ErrorHandler.handleValidationError(error, 'Update');
     }
   }
 }

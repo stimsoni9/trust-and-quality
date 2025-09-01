@@ -84,9 +84,8 @@ export class LicenceRequirementDomainService {
           errors.push(`Category ${index}, state ${stateKey}: licence_required must be a boolean`);
         }
         
-        if (!stateDataTyped.abn_conditions || typeof stateDataTyped.abn_conditions !== 'object') {
-          errors.push(`Category ${index}, state ${stateKey}: abn_conditions object is required`);
-        }
+        // NEW SCHEMA: abn_conditions are no longer at state level, they're at group level
+        // This validation is removed
         
         if (!Array.isArray(stateDataTyped.groups)) {
           errors.push(`Category ${index}, state ${stateKey}: groups must be an array`);
@@ -247,6 +246,36 @@ export class LicenceRequirementDomainService {
       minRequired,
       parentCategoryId,
       subCategoryId
+    );
+  }
+
+  // NEW SCHEMA: Create licence requirement group with authority and ABN conditions
+  createLicenceRequirementGroupWithAuthority(
+    name: string,
+    key: string,
+    minRequired: number,
+    state: string,
+    authorityName: string,
+    abnCompany: string,
+    abnIndividual: string,
+    abnPartnership: string,
+    abnTrust: string,
+    parentCategoryId?: number,
+    subCategoryId?: number,
+  ): LicenceRequirementGroup {
+    return new LicenceRequirementGroup(
+      name,
+      key,
+      minRequired,
+      state,
+      authorityName,
+      abnCompany,
+      abnIndividual,
+      abnPartnership,
+      abnTrust,
+      true, // isActive
+      parentCategoryId || null,
+      subCategoryId || null
     );
   }
 }

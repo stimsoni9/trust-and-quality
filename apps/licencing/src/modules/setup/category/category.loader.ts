@@ -2,8 +2,8 @@ import { Injectable, Logger } from '@nestjs/common';
 import axios from 'axios';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ParentCategoryEntity } from './entity/parent-category.entity';
-import { SubCategoryEntity } from './entity/sub-category.entity';
+import { ParentCategoryEntity } from '../../shared/entities/parent-category.entity';
+import { SubCategoryEntity } from '../../shared/entities/sub-category.entity';
 import { CategoryViewDto } from './dtos/category-view.dto';
 
 @Injectable()

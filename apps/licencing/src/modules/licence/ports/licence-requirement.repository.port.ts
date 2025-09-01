@@ -1,6 +1,7 @@
 import { CategoryState } from '../domain/entities/category-state.entity';
 import { AbnCondition, AbnConditionKind } from '../domain/entities/abn-condition.entity';
 import { LicenceRequirementGroup } from '../domain/entities/licence-requirement-group.entity';
+import { SubCategoryEntity } from '../../shared/entities/sub-category.entity';
 
 export const LICENCE_REQUIREMENT_REPOSITORY = Symbol('LicenceRequirementRepository');
 
@@ -54,7 +55,6 @@ export interface LicenceRequirementRepository {
   // Parent/Sub Category operations
   findParentCategory(name: string): Promise<any | null>;
   findParentCategoryById(id: number): Promise<any | null>;
-  findSubCategory(name: string): Promise<any | null>;
-  findSubCategoryById(id: number): Promise<any | null>;
-  findSubCategoryByShortName(shortName: string): Promise<any | null>;
+  findSubCategory(id: number): Promise<SubCategoryEntity | null>;
+  findSubCategoryByShortName(shortName: string): Promise<SubCategoryEntity | null>;
 }

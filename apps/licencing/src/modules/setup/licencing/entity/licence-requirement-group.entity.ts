@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { ParentCategoryEntity } from '../../category/entity/parent-category.entity';
+import { ParentCategoryEntity } from '../../../shared/entities/parent-category.entity';
 
 @Entity({ name: 'licence_requirement_group' })
 export class LicenceRequirementGroupEntity {

@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
-import { ParentCategoryEntity } from '../../category/entity/parent-category.entity';
-import { SubCategoryEntity } from '../../category/entity/sub-category.entity';
+import { ParentCategoryEntity } from '../../../shared/entities/parent-category.entity';
+import { SubCategoryEntity } from '../../../shared/entities/sub-category.entity';
 
 @Entity({ name: 'category_states' })
 export class CategoryStateEntity {

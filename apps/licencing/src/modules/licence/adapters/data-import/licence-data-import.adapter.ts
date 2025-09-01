@@ -86,10 +86,14 @@ export class LicenceDataImportAdapter implements DataImportPort {
         if (licenceRequirementGroup) {
           // Find all licence types for this group
           const licenceTypeIds: number[] = [];
-          for (const classData of groupData.classes) {
-            const licenceType = await this.licenceRequirementRepository.findLicenceType(classData.name);
+          for (const className of groupData.classes) {
+            // NEW SCHEMA: classes is now a simple string array, not objects with .name
+            const licenceType = await this.licenceRequirementRepository.findLicenceType(className);
             if (licenceType && licenceType.id) {
               licenceTypeIds.push(licenceType.id);
+              this.logger.debug(`Found licence type ID ${licenceType.id} for class "${className}"`);
+            } else {
+              this.logger.warn(`Licence type not found for class "${className}"`);
             }
           }
           
@@ -97,7 +101,11 @@ export class LicenceDataImportAdapter implements DataImportPort {
           if (licenceTypeIds.length > 0) {
             await this.groupLinkingPort.linkLicenceTypesToGroups(licenceRequirementGroup.id!, licenceTypeIds);
             this.logger.debug(`Linked ${licenceTypeIds.length} licence types to group ${groupKey}`);
+          } else {
+            this.logger.warn(`No licence types found to link for group ${groupKey}`);
           }
+        } else {
+          this.logger.warn(`Licence requirement group not found for key: ${groupKey}`);
         }
       }
     }
@@ -106,22 +114,22 @@ export class LicenceDataImportAdapter implements DataImportPort {
   async loadAuthorities(groups: any): Promise<void> {
     this.logger.log('Loading authorities...');
     
+    // NEW SCHEMA: Authorities are now at group level, not licence type level
     for (const [groupKey, group] of Object.entries(groups)) {
       const groupData = group as any;
-      if (groupData.licence_types) {
-        for (const licenceType of groupData.licence_types) {
-          const licenceTypeData = licenceType as any;
-          if (licenceTypeData.authority) {
-            const existingAuthority = await this.licenceRequirementRepository.findAuthority(licenceTypeData.authority);
-            if (!existingAuthority) {
-              const authorityEntity = {
-                authority: licenceTypeData.authority,
-                authorityName: licenceTypeData.authority,
-                state: 'NSW' // Default state
-              };
-              await this.licenceRequirementRepository.saveAuthority(authorityEntity);
-            }
-          }
+      if (groupData.authority && groupData.authority.name) {
+        const authorityName = groupData.authority.name;
+        const groupState = groupData.state || 'NSW';
+        
+        const existingAuthority = await this.licenceRequirementRepository.findAuthority(authorityName);
+        if (!existingAuthority) {
+          const authorityEntity = {
+            authority: authorityName,
+            authorityName: authorityName,
+            state: groupState // Use group state
+          };
+          await this.licenceRequirementRepository.saveAuthority(authorityEntity);
+          this.logger.debug(`Created authority: ${authorityName} for state: ${groupState}`);
         }
       }
     }
@@ -134,19 +142,33 @@ export class LicenceDataImportAdapter implements DataImportPort {
     
     for (const [groupKey, group] of Object.entries(groups)) {
       const groupData = group as any;
-      if (groupData.classes) {
-        for (const licenceType of groupData.classes) {
-          const licenceTypeData = licenceType as any;
-          const existingLicenceType = await this.licenceRequirementRepository.findLicenceType(licenceTypeData.name);
-          if (!existingLicenceType) {
-            const authority = await this.licenceRequirementRepository.findAuthority(licenceTypeData.authority);
-            const licenceTypeEntity = {
-              name: licenceTypeData.name,
-              state: licenceTypeData.state || 'NSW',
-              licenceType: licenceTypeData.name, // Set the required licenceType field
-              authority: authority
-            };
-            await this.licenceRequirementRepository.saveLicenceType(licenceTypeEntity);
+      
+      // NEW SCHEMA: classes is now a simple string array, and state/authority come from group level
+      if (groupData.classes && Array.isArray(groupData.classes)) {
+        const groupState = groupData.state || 'NSW';
+        const authorityName = groupData.authority?.name || 'Unknown';
+        
+        for (const licenceClassName of groupData.classes) {
+          if (typeof licenceClassName === 'string') {
+            const existingLicenceType = await this.licenceRequirementRepository.findLicenceType(licenceClassName);
+            if (!existingLicenceType) {
+              // Find or create authority
+              let authority = await this.licenceRequirementRepository.findAuthority(authorityName);
+              if (!authority) {
+                authority = await this.licenceRequirementRepository.saveAuthority({
+                  authorityName: authorityName,
+                  authority: authorityName
+                });
+              }
+              
+              const licenceTypeEntity = {
+                name: licenceClassName,
+                state: groupState,
+                licenceType: licenceClassName, // Set the required licenceType field
+                authority: authority
+              };
+              await this.licenceRequirementRepository.saveLicenceType(licenceTypeEntity);
+            }
           }
         }
       }
@@ -162,10 +184,17 @@ export class LicenceDataImportAdapter implements DataImportPort {
       const groupData = group as any;
       const existingGroup = await this.licenceRequirementRepository.findLicenceRequirementGroup(groupKey);
       if (!existingGroup) {
-        const groupEntity = this.licenceRequirementDomainService.createLicenceRequirementGroup(
+        // NEW SCHEMA: Create group with state, authority, and ABN conditions
+        const groupEntity = this.licenceRequirementDomainService.createLicenceRequirementGroupWithAuthority(
           groupData.name,
           groupKey,
-          groupData.min_required
+          groupData.min_required,
+          groupData.state || 'NSW',
+          groupData.authority?.name || 'Unknown',
+          groupData.authority?.abn_conditions?.company || '',
+          groupData.authority?.abn_conditions?.individual || '',
+          groupData.authority?.abn_conditions?.partnership || '',
+          groupData.authority?.abn_conditions?.trust || ''
         );
         await this.licenceRequirementRepository.saveLicenceRequirementGroup(groupEntity);
       }

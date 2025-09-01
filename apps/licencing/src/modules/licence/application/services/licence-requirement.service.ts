@@ -64,12 +64,12 @@ export class LicenceRequirementService {
       throw new NotFoundException(`Parent category with ID ${parentCategoryId} not found. Please provide a valid parent_category_id.`);
     }
 
-    let subCategory = null;
+    let subCategory = await this.licenceRequirementRepository.findSubCategory(subCategoryId);
     let subCategoryName: string | undefined = undefined;
 
     // Find sub-category if provided and not 0
     if (subCategoryId && subCategoryId > 0) {
-      subCategory = await this.licenceRequirementRepository.findSubCategoryById(subCategoryId);
+      subCategory = await this.licenceRequirementRepository.findSubCategory(subCategoryId);
       if (!subCategory) {
         throw new NotFoundException(`Sub-category with ID ${subCategoryId} not found or not associated with parent category ${parentCategoryId}. Please provide a valid sub_category_id.`);
       }
@@ -90,14 +90,8 @@ export class LicenceRequirementService {
       throw new NotFoundException(`No licence requirements found for category ${categoryDescription} in ${state}. This category may not require licensing or may not be available in this state.`);
     }
 
-    // Find ABN condition for this category state and ABN kind
-    const abnCondition = await this.licenceRequirementRepository.findAbnCondition(categoryState.id!, abnKind);
-    if (!abnCondition) {
-      const categoryDescription = subCategory 
-        ? `"${parentCategory.name} -> ${subCategory.name}"` 
-        : `"${parentCategory.name}"`;
-      throw new NotFoundException(`No ABN conditions found for ${abnKind} entities in category ${categoryDescription} for ${state}. This ABN type may not be supported for this category.`);
-    }
+    // NEW SCHEMA: ABN conditions are now stored in licence requirement groups, not in separate table
+    // We'll get the ABN conditions from the groups when we fetch them below
 
     // Find licence groups for this category state
     const categoryStateLicenceGroups = await this.licenceRequirementRepository.findCategoryStateLicenceGroups(categoryState.id!);
@@ -109,14 +103,15 @@ export class LicenceRequirementService {
       this.logger.warn(`No licence groups found for category ${categoryDescription} in ${state}`);
     }
 
-    // Build the response using domain logic
+    // Build the response using domain logic (ABN conditions now come from groups)
     const response = await this.buildRequirementsResponse(
       categoryState,
-      abnCondition,
+      null, // No longer using separate ABN condition entity
       categoryStateLicenceGroups,
       parentCategory.name,
       subCategoryName,
-      state
+      state,
+      abnKind // Pass the requested ABN kind for filtering
     );
 
     this.logger.log(`Successfully retrieved licence requirements for category ${parentCategory.name}${subCategoryName ? ` -> ${subCategoryName}` : ''}`);
@@ -213,29 +208,57 @@ export class LicenceRequirementService {
     categoryStateLicenceGroups: any[],
     categoryName: string,
     subCategoryName?: string,
-    state: string = 'NSW'
+    state: string = 'NSW',
+    abnKind?: AbnConditionKind // Add abnKind parameter for filtering
   ): Promise<LicenceRequirementsResponseDto> {
     const response: LicenceRequirementsResponseDto = {
       groups: {},
       categories: []
     };
 
-    // Build groups
+    // Build groups with NEW SCHEMA format
     for (const categoryStateLicenceGroup of categoryStateLicenceGroups) {
       const group = categoryStateLicenceGroup.licenceRequirementGroup;
       const groupKey = group.key || this.generateGroupKey(group.name);
       
-      // Load licence classes for this group, filtered by state
+      // Load licence classes for this group, filtered by state (as simple string array)
       const licenceClasses = await this.licenceRequirementRepository.findLicenceTypesByGroup(group.id!, state);
+      const classNames = licenceClasses.map(lc => lc.name);
+
+      // NEW SCHEMA: Build authority with filtered ABN conditions
+      const authority = {
+        name: group.authorityName || 'Unknown',
+        abn_conditions: {} as any
+      };
+
+      // Filter ABN conditions by requested type
+      if (abnKind) {
+        switch (abnKind) {
+          case AbnConditionKind.COMPANY:
+            authority.abn_conditions.company = group.abnCompany || '';
+            break;
+          case AbnConditionKind.INDIVIDUAL:
+            authority.abn_conditions.individual = group.abnIndividual || '';
+            break;
+          case AbnConditionKind.PARTNERSHIP:
+            authority.abn_conditions.partnership = group.abnPartnership || '';
+            break;
+          case AbnConditionKind.TRUST:
+            authority.abn_conditions.trust = group.abnTrust || '';
+            break;
+        }
+      }
 
       response.groups[groupKey] = {
         name: group.name,
         min_required: group.minRequired,
-        classes: licenceClasses
+        state: group.state || state,
+        authority: authority,
+        classes: classNames // Simple string array as per new schema
       };
     }
 
-    // Build categories
+    // NEW SCHEMA: Categories no longer have ABN conditions at state level
     const category = {
       name: categoryName,
       sub_category_name: subCategoryName,
@@ -244,14 +267,7 @@ export class LicenceRequirementService {
         [state]: {
           licence_required: categoryState.licenceRequired || false,
           licence_note: categoryState.licenceNote || '',
-          abn_conditions: {
-            company: abnCondition?.kind === AbnConditionKind.COMPANY ? abnCondition.message : undefined,
-            individual: abnCondition?.kind === AbnConditionKind.INDIVIDUAL ? abnCondition.message : undefined,
-            partnership: abnCondition?.kind === AbnConditionKind.PARTNERSHIP ? abnCondition.message : undefined,
-            trust: abnCondition?.kind === AbnConditionKind.TRUST ? abnCondition.message : undefined,
-            other: abnCondition?.kind === AbnConditionKind.OTHER ? abnCondition.message : undefined,
-          },
-          groups: Object.keys(response.groups)
+          groups: Object.keys(response.groups) // Only group references, no ABN conditions here
         }
       }
     };

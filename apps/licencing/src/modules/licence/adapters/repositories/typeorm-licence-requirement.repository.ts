@@ -251,23 +251,13 @@ export class TypeOrmLicenceRequirementRepository implements LicenceRequirementRe
     });
   }
 
-  async findSubCategory(name: string): Promise<any | null> {
+  async findSubCategory(id: number): Promise<any | null> {
     return await this.subCategoryRepo.findOne({
-      where: { name }
+      where: { id }
     });
   }
 
-  async findSubCategoryById(id: number): Promise<any | null> {
-    return await this.subCategoryRepo.findOne({
-      where: { id: id }
-    });
-  }
 
-  async findSubCategoryByShortName(shortName: string): Promise<any | null> {
-    return await this.subCategoryRepo.findOne({
-      where: { shortName }
-    });
-  }
 
   // Mapping methods
   private mapCategoryStateToDomain(entity: CategoryStateEntity): CategoryState {
@@ -339,6 +329,12 @@ export class TypeOrmLicenceRequirementRepository implements LicenceRequirementRe
       entity.name,
       entity.key,
       entity.minRequired,
+      entity.state,
+      entity.authorityName,
+      entity.abnCompany,
+      entity.abnIndividual,
+      entity.abnPartnership,
+      entity.abnTrust,
       entity.isActive,
       entity.parentCategoryId,
       entity.subCategoryId,
@@ -348,13 +344,25 @@ export class TypeOrmLicenceRequirementRepository implements LicenceRequirementRe
 
   private mapLicenceRequirementGroupToEntity(domain: LicenceRequirementGroup): LicenceRequirementGroupEntity {
     const entity = new LicenceRequirementGroupEntity();
-    entity.id = domain.id;
+    if (domain.id !== undefined) {
+      entity.id = domain.id;
+    }
     entity.name = domain.name;
     entity.key = domain.key;
     entity.minRequired = domain.minRequired;
+    entity.state = domain.state;
+    entity.authorityName = domain.authorityName;
+    entity.abnCompany = domain.abnCompany;
+    entity.abnIndividual = domain.abnIndividual;
+    entity.abnPartnership = domain.abnPartnership;
+    entity.abnTrust = domain.abnTrust;
     entity.isActive = domain.isActive;
     entity.parentCategoryId = domain.parentCategoryId;
     entity.subCategoryId = domain.subCategoryId;
     return entity;
+  }
+
+  async findSubCategoryByShortName(shortName: string): Promise<SubCategoryEntity | null> {
+    return this.subCategoryRepo.findOne({ where: { shortName } });
   }
 }
